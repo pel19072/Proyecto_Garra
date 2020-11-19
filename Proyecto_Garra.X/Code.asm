@@ -37,6 +37,7 @@ GPR_VAR				UDATA
     CONTROL			RES	    1
     MODO			RES	    1
     TOGGLE			RES	    1
+    CONT1			RES	    1
 		
 
 ;*******************************************************************************
@@ -59,12 +60,8 @@ PUSH:			    ; PUSHEA LOS DATOS DE STATUS Y W A UNA VARIABLE TEMPORAL EN CASO SE 
     MOVWF   STATUS_TEMP
 
 ISR:
-    BTFSC   PIR1, ADIF	    ; CÓDIGO PARA SABER DE PARTE DE QUIÉN ES LA INTERRUPCIÓN
-    CALL    BANDERA_ADC
     BTFSC   INTCON, T0IF
     CALL    BANDERA_TIMER0
-    BTFSC   PIR1, TMR1IF    ; CÓDIGO PARA SABER DE PARTE DE QUÉ TIMER SE REALIZÓ LA INTERRUPCIÓN
-    CALL    BANDERA_TIMER1
         
 POP:			    ; POPEA LOS DATOS DE UNA VARIABLE TEMPORAL A STATUS Y W PARA RECUPERAR CUALQUIER DATO PERDIDO EN LA INTERRUPCIÓN
     SWAPF   STATUS_TEMP, W
@@ -113,46 +110,6 @@ BANDERA_TIMER0:
 	    BCF	    TOGGLE, 1
 	    BCF	    INTCON, T0IF
 	RETURN
-    
-BANDERA_TIMER1:
-    MOVLW   0xFF ;0x0B	    ; DELAY PARA 2ms
-    MOVWF   TMR1H
-    MOVLW   0x06 ;0xDC
-    MOVWF   TMR1L
-    BCF	    PIR1, TMR1IF    ; REINICIA LA INTERRUPCIÓN
-    CALL    MAPPEO
-RETURN
-	
-BANDERA_ADC:
-    BTFSC   FLAG_ADC, 0
-    GOTO    ADCY
-    ADCX:
-	MOVFW   ADRESH	    ; MANDA LA CODIFICACION DIGITAL DE MI SEÑAL ANALOGICA AL PUERTO B
-	MOVWF   VAR_ADCX
-	CALL	CONFIGURACION_ADCY
-	BCF	PIR1, ADIF
-	BSF	ADCON0, 1
-	BSF	FLAG_ADC, 0
-    RETURN   
-    ADCY:		    ; FUNGIONA CON EL SERVO DERECHO
-	MOVFW   ADRESH	    ; MANDA LA CODIFICACION DIGITAL DE MI SEÑAL ANALOGICA AL PUERTO B
-	MOVWF   VAR_ADCY
-	CALL	CONFIGURACION_ADCX
-	BCF	PIR1, ADIF
-	BSF	ADCON0, 1
-	BCF	FLAG_ADC, 0
-    RETURN  
-    
-MAPPEO:
-    RRF	    VAR_ADCX, 0
-    ANDLW   b'01111111'
-    ADDLW   .32
-    MOVWF   CCPR1L
-    RRF	    VAR_ADCY, 0
-    ANDLW   b'01111111'
-    ADDLW   .32
-    MOVWF   CCPR2L    
-RETURN
 
 ;*******************************************************************************
 ; TABLA DE DISPLAYS
@@ -189,7 +146,6 @@ SETUP:
     CALL    CONFIGURACION_BASE		    ; EXPLICACIONES EN LA SECCIÓN DE CONFIGURACIONES
     CALL    CONFIGURACION_PWM
     CALL    CONFIGURACION_TIMER0
-    CALL    CONFIGURACION_TIMER1
     CALL    CONFIGURACION_TIMER2
     CALL    CONFIGURACION_INTERRUPCION
     CALL    CONFIGURACION_ADC
@@ -203,6 +159,7 @@ LOOP:
     BTFSC   PORTB, RB7		; NO EJECUTA LA INSTRUCCIÓN SI SIGUE PRESIONADO EL BOTÓN
     CALL    MODO_FUNCIONAMIENTO	; SE EJECUTA EL CAMBIO DE ESTADO
     CALL    MAPPEO
+    CALL    CONVERSION_ADC
     GOTO    LOOP
 
 ;*******************************************************************************
@@ -231,7 +188,76 @@ RETURN
 ANTIR:
     BSF   FLAG_ANTIREBOTE, 0	; YA QUE SE USAN PULL UPS, ESTE MASKING ME PERMITE VER QUÉ VALOR SE COLOCÓ EN CERO, ES DECIR, SE PRESIONÓ
 RETURN        
-	
+
+;*******************************************************************************
+; RUTINA DE MAPPEO PARA SERVOS
+;*******************************************************************************    
+MAPPEO:
+    RRF	    VAR_ADCX, 0
+    ANDLW   b'01111111'
+    ADDLW   .32
+    MOVWF   CCPR1L
+    RRF	    VAR_ADCY, 0
+    ANDLW   b'01111111'
+    ADDLW   .32
+    MOVWF   CCPR2L    
+RETURN    
+    
+;*******************************************************************************
+; RUTINA DE CONVERSION ADC
+;*******************************************************************************         
+CONVERSION_ADC:
+    BANKSEL ADCON0
+    MOVLW   b'00000011'			
+    MOVWF   ADCON0  
+    CALL    DELAY
+   
+    BSF	    ADCON0,GO
+    BTFSC   ADCON0,GO 
+    GOTO    $-1
+    
+    BANKSEL ADRESH
+    MOVFW   ADRESH
+    MOVWF   VAR_ADCY			
+    
+    BANKSEL ADCON0
+    MOVLW   b'00010011'			
+    MOVWF   ADCON0
+    CALL    DELAY
+    BSF	    ADCON0,GO
+    BTFSC   ADCON0,GO 
+    GOTO    $-1
+    
+    BANKSEL ADRESH
+    MOVFW   ADRESH
+    MOVWF   VAR_ADCX			
+RETURN    
+
+;*******************************************************************************
+; RUTINA DE DELAYS
+;*******************************************************************************                
+DELAY:
+    MOVLW   .23			    
+    MOVWF   CONT1
+    DECFSZ  CONT1, F
+    GOTO    $-1                       
+RETURN    
+  
+DELAY_BIG:
+    MOVLW   .255			    
+    MOVWF   CONT1
+    DECFSZ  CONT1, F
+    GOTO    $-1                       
+    MOVLW   .255			    
+    MOVWF   CONT1
+    DECFSZ  CONT1, F
+    GOTO    $-1                       
+    MOVLW   .255			  
+    MOVWF   CONT1
+    DECFSZ  CONT1, F
+    GOTO    $-1                       
+RETURN            
+    
 ;*******************************************************************************
 ; CONFIGURACIONES
 ;*******************************************************************************         
@@ -272,6 +298,7 @@ CONFIGURACION_BASE:
     CLRF    CONTROL
     CLRF    MODO
     CLRF    TOGGLE
+    CLRF    CONT1
 RETURN
     
 CONFIGURACION_PWM:
@@ -301,17 +328,7 @@ CONFIGURACION_TIMER0:
     MOVLW   b'01010111'		; PRESCALER DE 1:256 PARA PODER GENERAR INTERRUPCIONES DE 0.5ms
     MOVWF   OPTION_REG 
     BANKSEL PORTA
-RETURN
-    
-CONFIGURACION_TIMER1:
-    BANKSEL PORTA
-    CLRF    T1CON
-    BSF	    T1CON, 0	; ACTIVA EL TIMER 1
-    BCF	    T1CON, 1	; PARA QUE USE EL RELOJ INTERNO
-    BCF	    T1CON, 3
-    BSF	    T1CON, 4	; PARA PRESCALER DE 8
-    BSF	    T1CON, 5
-RETURN    
+RETURN 
     
 CONFIGURACION_TIMER2:
     BANKSEL PORTA
@@ -321,9 +338,6 @@ RETURN
     
 CONFIGURACION_INTERRUPCION:
     BANKSEL TRISA
-    BSF	    PIE1, ADIE		; HABILITA INTERRUPCION DEL ADC
-    BSF	    INTCON, PEIE
-    ;BSF	    PIE1, TMR1IE	; HABILITA INTERRUPCION DEL TIMER1
     BSF	    INTCON, T0IE
     
     MOVLW   .187		; TECHO PARA TIMER2 - PARA QUE EL PWM FUNCIONE CON 3ms
@@ -335,7 +349,6 @@ CONFIGURACION_INTERRUPCION:
     BANKSEL PORTA
     BSF	    INTCON, GIE		; HABILITA LAS INTERRUPCIONES
     BCF	    INTCON, T0IF	; PARA ASEGURARSE DE QUE NO TENGA OVERFLOW AL INICIO
-    ;BCF	    PIR1, TMR1IF
 RETURN
 
 CONFIGURACION_ADC:    
@@ -349,17 +362,7 @@ CONFIGURACION_ADC:
     BCF	    ADCON0, 3
     BCF	    ADCON0, 5
     BCF	    ADCON0, 6
-    BSF	    ADCON0, 7   
-RETURN
-
-CONFIGURACION_ADCX:
-    BANKSEL ADCON0 
-    BCF	    ADCON0, 4
-RETURN
-    
-CONFIGURACION_ADCY:    
-    BANKSEL ADCON0 
-    BSF	    ADCON0, 4
+    BCF	    ADCON0, 7   
 RETURN
     
 ;*******************************************************************************
