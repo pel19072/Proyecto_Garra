@@ -1,16 +1,16 @@
 MPLINK 5.08, LINKER
-Linker Map File - Created Sat Nov 21 10:57:19 2020
+Linker Map File - Created Sat Nov 21 16:47:39 2020
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
                 ---------  ---------  ---------  ---------  ---------
                  RES_VECT       code   0x000000    program   0x000002
                    .cinit    romdata   0x000001    program   0x000004
-               ISR_VECTOR       code   0x000004    program   0x00007a
-                MAIN_PROG       code   0x000100    program   0x000152
+               ISR_VECTOR       code   0x000004    program   0x0000c4
+                MAIN_PROG       code   0x000100    program   0x0001d6
 .config_2007_BUILD/DEFAULT/PRODUCTION/CODE.O       code   0x002007    program   0x000002
 .config_2008_BUILD/DEFAULT/PRODUCTION/CODE.O       code   0x002008    program   0x000002
-                  GPR_VAR      udata   0x000020       data   0x000010
+                  GPR_VAR      udata   0x000020       data   0x000017
 
 
 
@@ -18,64 +18,73 @@ Linker Map File - Created Sat Nov 21 10:57:19 2020
                                Start         End      
                            ---------   ---------      
                             0x000000    0x000002      
-                            0x000004    0x000040      
-                            0x000100    0x0001a8      
+                            0x000004    0x000065      
+                            0x000100    0x0001ea      
                             0x002007    0x002008      
-            235 out of 8455 program addresses used, program memory utilization is 2%
+            338 out of 8455 program addresses used, program memory utilization is 3%
 
 
 
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                  ABIERTO   0x000013    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                    ANTIR   0x000119    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-           BANDERA_TIMER0   0x00000f    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                  CERRADO   0x000021    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-        CONFIGURACION_ADC   0x00019c    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-       CONFIGURACION_BASE   0x00014e    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-CONFIGURACION_INTERRUPCION   0x000192    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-        CONFIGURACION_PWM   0x000172    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-     CONFIGURACION_TIMER0   0x000185    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-     CONFIGURACION_TIMER2   0x00018d    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                   CONTEO   0x000115    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-           CONVERSION_ADC   0x00011b    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                    DELAY   0x00013c    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                DELAY_BIG   0x000141    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-              HIGH_CLOSED   0x000023    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                HIGH_OPEN   0x000015    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                    ANTIR   0x000137    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                AUTOMATIC   0x000112    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+           AUTOMATIC_HIGH   0x00011c    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+            AUTOMATIC_LOW   0x000116    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+               BANDERA_RX   0x00001f    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+           BANDERA_TIMER0   0x000011    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+        CONFIGURACION_ADC   0x0001c7    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+       CONFIGURACION_BASE   0x000174    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+CONFIGURACION_INTERRUPCION   0x0001bb    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+        CONFIGURACION_PWM   0x00019b    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+         CONFIGURACION_RX   0x0001e5    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+     CONFIGURACION_TIMER0   0x0001ae    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+     CONFIGURACION_TIMER2   0x0001b6    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+    CONFIGURACION_TX_9600   0x0001d4    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                   CONTEO   0x00012b    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+           CONVERSION_ADC   0x000139    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+         CONVERSION_COMPU   0x00015a    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                    DELAY   0x00016f    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                  ERRONEO   0x000052    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                HIGH_OPEN   0x000013    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
                       ISR   0x000008    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                     LOOP   0x000106    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-               LOW_CLOSED   0x000029    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                 LOW_OPEN   0x00001b    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-      MODO_FUNCIONAMIENTO   0x00010c    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                      POP   0x00000a    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                     LOOP   0x000108    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                 LOW_OPEN   0x000019    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                   MANUAL   0x00010c    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+      MODO_FUNCIONAMIENTO   0x000122    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                      POP   0x00000c    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
                      PUSH   0x000004    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                REINICIOA   0x000117    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                   SERVO1   0x000172    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                   SERVO2   0x00017c    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                REINICIOA   0x000131    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                   SERVO1   0x00019b    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                   SERVO2   0x0001a5    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
                     SETUP   0x000100    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
                     START   0x000100    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                    TABLA   0x00002f    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-          _MAIN_PROG_0122   0x000122    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-          _MAIN_PROG_0132   0x000132    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-          _MAIN_PROG_013F   0x00013f    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-          _MAIN_PROG_0144   0x000144    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-          _MAIN_PROG_0148   0x000148    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-          _MAIN_PROG_014C   0x00014c    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                    CONT1   0x00002f       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                  CONTROL   0x00002c       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-               DISPLAY_HX   0x000027       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-               DISPLAY_HY   0x000029       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-               DISPLAY_LX   0x000028       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-               DISPLAY_LY   0x00002a       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                     FLAG   0x000025       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                 FLAG_ADC   0x000024       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-          FLAG_ANTIREBOTE   0x000026       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-              ITERACIONES   0x00002b       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                     MODO   0x00002d       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                    TABLA   0x000054    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+             VERIFICACION   0x000034    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+          _MAIN_PROG_0140   0x000140    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+          _MAIN_PROG_0150   0x000150    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+          _MAIN_PROG_0172   0x000172    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                     ALTO   0x000026       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                     BAJO   0x000027       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                    CONT1   0x000029       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                 CUENTARX   0x000036       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+          FLAG_ANTIREBOTE   0x000024       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                     MODO   0x000025       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                     RXB0   0x00002a       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                     RXB1   0x00002b       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                     RXB2   0x00002c       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                     RXB3   0x00002d       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                     RXB4   0x00002e       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                     RXB5   0x00002f       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                     RXB6   0x000030       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                     RXB7   0x000031       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+               SERVO_EJE1   0x000033       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+               SERVO_EJE2   0x000034       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                SERVO_FUN   0x000035       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+              SERVO_GARRA   0x000032       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
               STATUS_TEMP   0x000021       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                   TOGGLE   0x00002e       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                   TOGGLE   0x000028       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
                  VAR_ADCX   0x000022       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
                  VAR_ADCY   0x000023       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
                    W_TEMP   0x000020       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
@@ -87,54 +96,63 @@ CONFIGURACION_INTERRUPCION   0x000192    program     static E:\UVG\Semestre 4\Mi
                 ---------  ---------  ---------  --------- ---------                
                      PUSH   0x000004    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
                       ISR   0x000008    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                      POP   0x00000a    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-           BANDERA_TIMER0   0x00000f    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                  ABIERTO   0x000013    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                HIGH_OPEN   0x000015    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                 LOW_OPEN   0x00001b    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                  CERRADO   0x000021    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-              HIGH_CLOSED   0x000023    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-               LOW_CLOSED   0x000029    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                    TABLA   0x00002f    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                      POP   0x00000c    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+           BANDERA_TIMER0   0x000011    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                HIGH_OPEN   0x000013    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                 LOW_OPEN   0x000019    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+               BANDERA_RX   0x00001f    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+             VERIFICACION   0x000034    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                  ERRONEO   0x000052    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                    TABLA   0x000054    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
                     START   0x000100    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
                     SETUP   0x000100    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                     LOOP   0x000106    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-      MODO_FUNCIONAMIENTO   0x00010c    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                   CONTEO   0x000115    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                REINICIOA   0x000117    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                    ANTIR   0x000119    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-           CONVERSION_ADC   0x00011b    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-          _MAIN_PROG_0122   0x000122    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-          _MAIN_PROG_0132   0x000132    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                    DELAY   0x00013c    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-          _MAIN_PROG_013F   0x00013f    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                DELAY_BIG   0x000141    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-          _MAIN_PROG_0144   0x000144    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-          _MAIN_PROG_0148   0x000148    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-          _MAIN_PROG_014C   0x00014c    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-       CONFIGURACION_BASE   0x00014e    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                   SERVO1   0x000172    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-        CONFIGURACION_PWM   0x000172    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                   SERVO2   0x00017c    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-     CONFIGURACION_TIMER0   0x000185    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-     CONFIGURACION_TIMER2   0x00018d    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-CONFIGURACION_INTERRUPCION   0x000192    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-        CONFIGURACION_ADC   0x00019c    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                     LOOP   0x000108    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                   MANUAL   0x00010c    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                AUTOMATIC   0x000112    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+            AUTOMATIC_LOW   0x000116    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+           AUTOMATIC_HIGH   0x00011c    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+      MODO_FUNCIONAMIENTO   0x000122    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                   CONTEO   0x00012b    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                REINICIOA   0x000131    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                    ANTIR   0x000137    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+           CONVERSION_ADC   0x000139    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+          _MAIN_PROG_0140   0x000140    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+          _MAIN_PROG_0150   0x000150    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+         CONVERSION_COMPU   0x00015a    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                    DELAY   0x00016f    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+          _MAIN_PROG_0172   0x000172    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+       CONFIGURACION_BASE   0x000174    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+        CONFIGURACION_PWM   0x00019b    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                   SERVO1   0x00019b    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                   SERVO2   0x0001a5    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+     CONFIGURACION_TIMER0   0x0001ae    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+     CONFIGURACION_TIMER2   0x0001b6    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+CONFIGURACION_INTERRUPCION   0x0001bb    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+        CONFIGURACION_ADC   0x0001c7    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+    CONFIGURACION_TX_9600   0x0001d4    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+         CONFIGURACION_RX   0x0001e5    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
                    W_TEMP   0x000020       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
               STATUS_TEMP   0x000021       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
                  VAR_ADCX   0x000022       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
                  VAR_ADCY   0x000023       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                 FLAG_ADC   0x000024       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                     FLAG   0x000025       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-          FLAG_ANTIREBOTE   0x000026       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-               DISPLAY_HX   0x000027       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-               DISPLAY_LX   0x000028       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-               DISPLAY_HY   0x000029       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-               DISPLAY_LY   0x00002a       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-              ITERACIONES   0x00002b       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                  CONTROL   0x00002c       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                     MODO   0x00002d       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                   TOGGLE   0x00002e       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                    CONT1   0x00002f       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+          FLAG_ANTIREBOTE   0x000024       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                     MODO   0x000025       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                     ALTO   0x000026       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                     BAJO   0x000027       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                   TOGGLE   0x000028       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                    CONT1   0x000029       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                     RXB0   0x00002a       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                     RXB1   0x00002b       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                     RXB2   0x00002c       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                     RXB3   0x00002d       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                     RXB4   0x00002e       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                     RXB5   0x00002f       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                     RXB6   0x000030       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                     RXB7   0x000031       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+              SERVO_GARRA   0x000032       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+               SERVO_EJE1   0x000033       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+               SERVO_EJE2   0x000034       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                SERVO_FUN   0x000035       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                 CUENTARX   0x000036       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
 
 
