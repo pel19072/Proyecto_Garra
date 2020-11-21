@@ -158,7 +158,6 @@ LOOP:
     CALL    ANTIR		; INDICA QUE YA SE PRESIONÓ 
     BTFSC   PORTB, RB7		; NO EJECUTA LA INSTRUCCIÓN SI SIGUE PRESIONADO EL BOTÓN
     CALL    MODO_FUNCIONAMIENTO	; SE EJECUTA EL CAMBIO DE ESTADO
-    CALL    MAPPEO
     CALL    CONVERSION_ADC
     GOTO    LOOP
 
@@ -188,20 +187,6 @@ RETURN
 ANTIR:
     BSF   FLAG_ANTIREBOTE, 0	; YA QUE SE USAN PULL UPS, ESTE MASKING ME PERMITE VER QUÉ VALOR SE COLOCÓ EN CERO, ES DECIR, SE PRESIONÓ
 RETURN        
-
-;*******************************************************************************
-; RUTINA DE MAPPEO PARA SERVOS
-;*******************************************************************************    
-MAPPEO:
-    RRF	    VAR_ADCX, 0
-    ANDLW   b'01111111'
-    ADDLW   .32
-    MOVWF   CCPR1L
-    RRF	    VAR_ADCY, 0
-    ANDLW   b'01111111'
-    ADDLW   .32
-    MOVWF   CCPR2L    
-RETURN    
     
 ;*******************************************************************************
 ; RUTINA DE CONVERSION ADC
@@ -218,26 +203,37 @@ CONVERSION_ADC:
     
     BANKSEL ADRESH
     MOVFW   ADRESH
-    MOVWF   VAR_ADCY			
+    MOVWF   VAR_ADCY	
+    
+    RRF	    VAR_ADCY, 0
+    ANDLW   b'01111111'
+    ADDLW   .32
+    MOVWF   CCPR2L 
     
     BANKSEL ADCON0
     MOVLW   b'00010011'			
     MOVWF   ADCON0
     CALL    DELAY
+    
     BSF	    ADCON0,GO
     BTFSC   ADCON0,GO 
     GOTO    $-1
     
     BANKSEL ADRESH
     MOVFW   ADRESH
-    MOVWF   VAR_ADCX			
+    MOVWF   VAR_ADCX
+    
+    RRF	    VAR_ADCX, 0
+    ANDLW   b'01111111'
+    ADDLW   .32
+    MOVWF   CCPR1L
 RETURN    
 
 ;*******************************************************************************
 ; RUTINA DE DELAYS
 ;*******************************************************************************                
 DELAY:
-    MOVLW   .23			    
+    MOVLW   .100			    
     MOVWF   CONT1
     DECFSZ  CONT1, F
     GOTO    $-1                       
