@@ -5,7 +5,7 @@
 ;    File Version:          v.1                                                *
 ;    Author:                Ricardo Pellecer Orellana                          *
 ;    Company:               UVG                                                *
-;    Description:           LAB 8	                                       *
+;    Description:           PROYECTO FINAL                                     *
 ;                                                                              *
 ;*******************************************************************************
 
@@ -163,8 +163,9 @@ BANDERA_RX:
 
 	MOVLW   .48		
 	SUBWF   RXB7,W
-	MOVWF   SERVO_FUN    
+	MOVWF   SERVO_FUN 
 	CLRF	CUENTARX
+	BSF	PORTB, 6
 	RETURN
 
     ERRONEO:
@@ -354,7 +355,7 @@ RETURN
 ; RUTINA DE DELAYS
 ;*******************************************************************************                
 DELAY:
-    MOVLW   .100			    
+    MOVLW   .23			    
     MOVWF   CONT1
     DECFSZ  CONT1, F
     GOTO    $-1                       

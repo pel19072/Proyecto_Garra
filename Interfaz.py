@@ -4,7 +4,7 @@ import threading
 import serial
 import time
 import sys
-toggle = 1
+toggle = 0
 garra = 0
 value_horizontal = 0
 value_vertical = 0

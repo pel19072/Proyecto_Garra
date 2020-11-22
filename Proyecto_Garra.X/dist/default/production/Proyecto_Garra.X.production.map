@@ -1,12 +1,12 @@
 MPLINK 5.08, LINKER
-Linker Map File - Created Sat Nov 21 16:47:39 2020
+Linker Map File - Created Sat Nov 21 19:34:30 2020
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
                 ---------  ---------  ---------  ---------  ---------
                  RES_VECT       code   0x000000    program   0x000002
                    .cinit    romdata   0x000001    program   0x000004
-               ISR_VECTOR       code   0x000004    program   0x0000c4
+               ISR_VECTOR       code   0x000004    program   0x0000c6
                 MAIN_PROG       code   0x000100    program   0x0001d6
 .config_2007_BUILD/DEFAULT/PRODUCTION/CODE.O       code   0x002007    program   0x000002
 .config_2008_BUILD/DEFAULT/PRODUCTION/CODE.O       code   0x002008    program   0x000002
@@ -18,10 +18,10 @@ Linker Map File - Created Sat Nov 21 16:47:39 2020
                                Start         End      
                            ---------   ---------      
                             0x000000    0x000002      
-                            0x000004    0x000065      
+                            0x000004    0x000066      
                             0x000100    0x0001ea      
                             0x002007    0x002008      
-            338 out of 8455 program addresses used, program memory utilization is 3%
+            339 out of 8455 program addresses used, program memory utilization is 4%
 
 
 
@@ -46,7 +46,7 @@ CONFIGURACION_INTERRUPCION   0x0001bb    program     static E:\UVG\Semestre 4\Mi
            CONVERSION_ADC   0x000139    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
          CONVERSION_COMPU   0x00015a    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
                     DELAY   0x00016f    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                  ERRONEO   0x000052    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                  ERRONEO   0x000053    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
                 HIGH_OPEN   0x000013    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
                       ISR   0x000008    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
                      LOOP   0x000108    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
@@ -60,7 +60,7 @@ CONFIGURACION_INTERRUPCION   0x0001bb    program     static E:\UVG\Semestre 4\Mi
                    SERVO2   0x0001a5    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
                     SETUP   0x000100    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
                     START   0x000100    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                    TABLA   0x000054    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                    TABLA   0x000055    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
              VERIFICACION   0x000034    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
           _MAIN_PROG_0140   0x000140    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
           _MAIN_PROG_0150   0x000150    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
@@ -102,8 +102,8 @@ CONFIGURACION_INTERRUPCION   0x0001bb    program     static E:\UVG\Semestre 4\Mi
                  LOW_OPEN   0x000019    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
                BANDERA_RX   0x00001f    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
              VERIFICACION   0x000034    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                  ERRONEO   0x000052    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
-                    TABLA   0x000054    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                  ERRONEO   0x000053    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
+                    TABLA   0x000055    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
                     START   0x000100    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
                     SETUP   0x000100    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
                      LOOP   0x000108    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Proyecto_Garra.X\Code.asm
