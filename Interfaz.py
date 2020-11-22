@@ -56,49 +56,66 @@ def controles():
         if (toggle == 1):
             # Mando 9 para control manual
             ser.write(bytes.fromhex('39'))
+            print(ser.read())
             # Coma
             ser.write(bytes.fromhex('2C'))
+            print(ser.read())
             # Posicion primer servo
             if (garra == 1):
                 # 00 para posición mínima
                 ser.write(bytes.fromhex('30'))
+                print(ser.read())
             else:
                 # 9 para posición máxima
                 ser.write(bytes.fromhex('39'))
+                print(ser.read())
             # Coma
             ser.write(bytes.fromhex('2C'))
+            print(ser.read())
             # Posicion segundo servo
             ser.write(bytes.fromhex(hex(ord(str(value_vertical)))[2:]))
+            print(ser.read())
             # Coma
             ser.write(bytes.fromhex('2C'))
+            print(ser.read())
             # Posicion tercer servo
             ser.write(bytes.fromhex(hex(ord(str(value_horizontal)))[2:]))
+            print(ser.read())
             # Enter
             ser.write(bytes.fromhex('0A'))
+            print(ser.read())
             ventanamain.actualizacion()
-            print('*****************************************COMPUTADORA*******************************************')
-            print('Toggle = ', toggle, ' y manda 39\nGarra = ', garra, '\nVertical = ', hex(ord(str(value_vertical)))[2:], '\nHorizontal = ', hex(ord(str(value_horizontal)))[2:])
+            #print('*****************************************COMPUTADORA*******************************************')
+            #print('Toggle = ', toggle, ' y manda 39\nGarra = ', garra, '\nVertical = ', hex(ord(str(value_vertical)))[2:], '\nHorizontal = ', hex(ord(str(value_horizontal)))[2:])
 
         else:
             try :
                 # Mando 00 para control manual
                 ser.write(bytes.fromhex('30'))
+                print(ser.read())
                 # Coma
                 ser.write(bytes.fromhex('2C'))
+                print(ser.read())
                 # Posicion primer servo
                 ser.write(bytes.fromhex('30'))
+                print(ser.read())
                 # Coma
                 ser.write(bytes.fromhex('2C'))
+                print(ser.read())
                 # Posicion segundo servo
                 ser.write(bytes.fromhex('30'))
+                print(ser.read())
                 # Coma
                 ser.write(bytes.fromhex('2C'))
+                print(ser.read())
                 # Posicion tercer servo
                 ser.write(bytes.fromhex('30'))
+                print(ser.read())
                 # Enter
                 ser.write(bytes.fromhex('0A'))
+                print(ser.read())
                 ventanamain.actualizacion()
-                print('Toggle = ', toggle, ' y manda 30\nGarra = ', garra, '\nVertical = ', hex(ord(str(value_vertical)))[2:], '\nHorizontal = ', hex(ord(str(value_horizontal)))[2:])
+                #print('Toggle = ', toggle, ' y manda 30\nGarra = ', garra, '\nVertical = ', hex(ord(str(value_vertical)))[2:], '\nHorizontal = ', hex(ord(str(value_horizontal)))[2:])
             except:
                 pass
 

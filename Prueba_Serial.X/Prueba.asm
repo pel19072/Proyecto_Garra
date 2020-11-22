@@ -82,7 +82,6 @@ BANDERA_TIMER0:
 	MOVWF   TMR0
 	BSF     PORTC, 0
 	BSF     TOGGLE, 0
-	BCF	PORTB, 6
 	BCF     INTCON, T0IF
     RETURN
     LOW_OPEN:
@@ -90,7 +89,6 @@ BANDERA_TIMER0:
 	MOVWF   TMR0
 	BCF     PORTC, 0
 	BCF     TOGGLE, 0
-	BSF	PORTB, 6
 	BCF     INTCON, T0IF
     RETURN
 
@@ -161,8 +159,8 @@ BANDERA_RX:
 	MOVLW   .48		
 	SUBWF   RXB7,W
 	MOVWF   SERVO_FUN 
-	MOVWF	PORTD
-	CLRF	CUENTARX
+	CLRF	CUENTARX	
+	BSF	PORTB, 6
 	RETURN
 
     ERRONEO:
@@ -189,9 +187,11 @@ SETUP:
 ; MAIN LOOP
 ;*******************************************************************************    
 LOOP:  
-    MOVLW   .0
+    MOVFW   SERVO_FUN
+    MOVWF   PORTD
+    MOVLW   .9
     SUBWF   SERVO_FUN
-    BTFSS   STATUS, Z
+    BTFSC   STATUS, Z
     GOTO    AUTOMATIC
     MANUAL:
 	BCF	PORTB, 0
@@ -279,6 +279,15 @@ CONFIGURACION_BASE:
     CLRF    SERVO_EJE1
     CLRF    SERVO_EJE2
     CLRF    SERVO_FUN
+    CLRF    CUENTARX
+    CLRF    RXB0
+    CLRF    RXB1
+    CLRF    RXB2
+    CLRF    RXB3
+    CLRF    RXB4
+    CLRF    RXB5
+    CLRF    RXB6
+    CLRF    RXB7
 RETURN
     
 CONFIGURACION_PWM:
