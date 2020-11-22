@@ -24,27 +24,22 @@
 GPR_VAR				UDATA
     W_TEMP			RES	    1	; PARA GUARDAR INFO MIENTRAS SE EJECUTA LA INTERRUPCIÓN
     STATUS_TEMP			RES	    1
-    VAR_ADCX			RES	    1
-    VAR_ADCY			RES	    1
-    FLAG_ANTIREBOTE		RES	    1
-    MODO			RES	    1
     ALTO			RES	    1
     BAJO			RES	    1
     TOGGLE			RES	    1
-    CONT1			RES	    1
-    RXB0			RES	    1	; 
-    RXB1			RES	    1	; 
-    RXB2			RES	    1	; 
-    RXB3			RES	    1	; 
-    RXB4			RES	    1	; 
-    RXB5			RES	    1	; 
-    RXB6			RES	    1	; 
-    RXB7			RES	    1	; 
-    SERVO_GARRA			RES	    1	; 
-    SERVO_EJE1			RES	    1	; 
-    SERVO_EJE2			RES	    1	; 
-    SERVO_FUN			RES	    1	; 
-    CUENTARX			RES	    1	; 
+    RXB0			RES	    1	 
+    RXB1			RES	    1	 
+    RXB2			RES	    1	 
+    RXB3			RES	    1	 
+    RXB4			RES	    1	 
+    RXB5			RES	    1	 
+    RXB6			RES	    1	 
+    RXB7			RES	    1	 
+    SERVO_GARRA			RES	    1	 
+    SERVO_EJE1			RES	    1	 
+    SERVO_EJE2			RES	    1	 
+    SERVO_FUN			RES	    1	 
+    CUENTARX			RES	    1	 
 			
 
 ;*******************************************************************************
@@ -87,6 +82,7 @@ BANDERA_TIMER0:
 	MOVWF   TMR0
 	BSF     PORTC, 0
 	BSF     TOGGLE, 0
+	BCF	PORTB, 6
 	BCF     INTCON, T0IF
     RETURN
     LOW_OPEN:
@@ -94,6 +90,7 @@ BANDERA_TIMER0:
 	MOVWF   TMR0
 	BCF     PORTC, 0
 	BCF     TOGGLE, 0
+	BSF	PORTB, 6
 	BCF     INTCON, T0IF
     RETURN
 
@@ -164,8 +161,8 @@ BANDERA_RX:
 	MOVLW   .48		
 	SUBWF   RXB7,W
 	MOVWF   SERVO_FUN 
+	MOVWF	PORTD
 	CLRF	CUENTARX
-	BSF	PORTB, 6
 	RETURN
 
     ERRONEO:
@@ -185,7 +182,6 @@ SETUP:
     CALL    CONFIGURACION_TIMER0
     CALL    CONFIGURACION_TIMER2
     CALL    CONFIGURACION_INTERRUPCION
-    CALL    CONFIGURACION_ADC
     CALL    CONFIGURACION_TX_9600
     CALL    CONFIGURACION_RX
     
@@ -193,18 +189,15 @@ SETUP:
 ; MAIN LOOP
 ;*******************************************************************************    
 LOOP:  
-    MOVLW   .9
+    MOVLW   .0
     SUBWF   SERVO_FUN
-    BTFSC   STATUS, Z
+    BTFSS   STATUS, Z
     GOTO    AUTOMATIC
     MANUAL:
-	BTFSS   PORTB, RB7		; REVISA SI EL BOTÓN DE CAMBIO DE ESTADO SE HA PRESIONADO
-	CALL    ANTIR		; INDICA QUE YA SE PRESIONÓ 
-	BTFSC   PORTB, RB7		; NO EJECUTA LA INSTRUCCIÓN SI SIGUE PRESIONADO EL BOTÓN
-	CALL    MODO_FUNCIONAMIENTO	; SE EJECUTA EL CAMBIO DE ESTADO
-	CALL    CONVERSION_ADC
+	BCF	PORTB, 0
 	GOTO    LOOP
     AUTOMATIC:
+	BSF	PORTB, 0
 	MOVLW	.9
 	SUBWF   SERVO_GARRA
 	BTFSC   STATUS, Z
@@ -223,83 +216,7 @@ LOOP:
 	    MOVWF	ALTO
 	    CALL	CONVERSION_COMPU
 	    GOTO	LOOP	    
-
-;*******************************************************************************
-; RUTINA DE SELECCIÓN DE MODOS DE FUNCIONAMIENTO
-;*******************************************************************************    
-MODO_FUNCIONAMIENTO:
-    MOVFW   FLAG_ANTIREBOTE
-    SUBLW   .1			; REVISA QUE SÍ HAYA PASADO POR EL ANTIREBOTE
-    BTFSS   STATUS, Z		; SI NO PASÓ POR EL ANTIREBOTE, SIGNIFICA QUE NO SE PRESIONÓ EL BOTÓN Y NO EJECUTA LA INSTRUCCIÓN
-RETURN
-    CLRF    FLAG_ANTIREBOTE	; LIMPIA LA BANDERA PARA QUE SE PUEDA VOLVER A PRESIONAR EL BOTÓN SIN REBOTES
-    MOVFW   MODO		
-    SUBLW   .1			
-    BTFSC   STATUS, Z
-    GOTO    REINICIOA		; SIRVE PARA QUE NO SE PASE DEL MODO 8
-    CONTEO:
-	MOVLW	.253
-	MOVWF	BAJO
-	MOVLW	.181
-	MOVWF	ALTO
-    	INCF    MODO
-    RETURN
-    REINICIOA:
-	MOVLW	.250
-	MOVWF	BAJO
-	MOVLW	.184
-	MOVWF	ALTO
-	CLRF	MODO
-    RETURN   
-
-;*******************************************************************************
-; RUTINA DE ANTIREBOTE
-;*******************************************************************************        
-ANTIR:
-    BSF   FLAG_ANTIREBOTE, 0	; YA QUE SE USAN PULL UPS, ESTE MASKING ME PERMITE VER QUÉ VALOR SE COLOCÓ EN CERO, ES DECIR, SE PRESIONÓ
-RETURN        
-    
-;*******************************************************************************
-; RUTINA DE CONVERSION ADC
-;*******************************************************************************         
-CONVERSION_ADC:
-    BANKSEL ADCON0
-    MOVLW   b'00000011'			
-    MOVWF   ADCON0  
-    CALL    DELAY
-   
-    BSF	    ADCON0,GO
-    BTFSC   ADCON0,GO 
-    GOTO    $-1
-    
-    BANKSEL ADRESH
-    MOVFW   ADRESH
-    MOVWF   VAR_ADCY	
-    
-    RRF	    VAR_ADCY, 0
-    ANDLW   b'01111111'
-    ADDLW   .32
-    MOVWF   CCPR2L 
-    
-    BANKSEL ADCON0
-    MOVLW   b'00010011'			
-    MOVWF   ADCON0
-    CALL    DELAY
-    
-    BSF	    ADCON0,GO
-    BTFSC   ADCON0,GO 
-    GOTO    $-1
-    
-    BANKSEL ADRESH
-    MOVFW   ADRESH
-    MOVWF   VAR_ADCX
-    
-    RRF	    VAR_ADCX, 0
-    ANDLW   b'01111111'
-    ADDLW   .32
-    MOVWF   CCPR1L
-RETURN    
-
+	    
 ;*******************************************************************************
 ; RUTINA DE CONVERSION COMPU
 ;*******************************************************************************         
@@ -325,17 +242,7 @@ CONVERSION_COMPU:
     ANDLW   b'11111110'
     ADDLW   .32
     MOVWF   CCPR2L
-RETURN    
-    
-;*******************************************************************************
-; RUTINA DE DELAYS
-;*******************************************************************************                
-DELAY:
-    MOVLW   .60			    
-    MOVWF   CONT1
-    DECFSZ  CONT1, F
-    GOTO    $-1                       
-RETURN          
+RETURN           
     
 ;*******************************************************************************
 ; CONFIGURACIONES
@@ -350,13 +257,10 @@ CONFIGURACION_BASE:
 
     BANKSEL ANSEL
     CLRF    ANSEL
-    BSF	    ANSEL, 0		; POT EN X
-    BSF	    ANSEL, 5		; POT EN Y
     CLRF    ANSELH		; BORRA EL CONTROL DE ENTRADAS ANALÓGICAS	
 
     BANKSEL TRISA
-    MOVLW   b'00100001'		; POT Y TRANSISTORES
-    MOVWF   TRISA
+    CLRF    TRISA
 		
     MOVLW   b'10000000'		; PUSHES EN EL PUERTO B PARA INCLUIR LOS PULL UPS POR SOFTWARE - TIENE 4 SALIDAS PUES SE CONECTARON AHÍ LOS TRANSISTORES (NPN 3904)
     MOVWF   TRISB
@@ -368,14 +272,9 @@ CONFIGURACION_BASE:
     CLRF    TRISE
     
     BANKSEL PORTA
-    CLRF    FLAG_ANTIREBOTE
-    CLRF    VAR_ADCX  
-    CLRF    VAR_ADCY  
-    CLRF    MODO
     CLRF    ALTO
     CLRF    BAJO
     CLRF    TOGGLE
-    CLRF    CONT1
     CLRF    SERVO_GARRA
     CLRF    SERVO_EJE1
     CLRF    SERVO_EJE2
@@ -432,20 +331,6 @@ CONFIGURACION_INTERRUPCION:
     BANKSEL PORTA
     BSF	    INTCON, GIE		; HABILITA LAS INTERRUPCIONES
     BCF	    INTCON, T0IF	; PARA ASEGURARSE DE QUE NO TENGA OVERFLOW AL INICIO
-RETURN
-
-CONFIGURACION_ADC:    
-    BANKSEL ADCON1 
-    CLRF    ADCON1		; VDD Y VSS COMO REFERENCIA / JUSTIFICADO A LA IZQUIERDA
-    
-    BANKSEL ADCON0 
-    BSF	    ADCON0, 0
-    BSF	    ADCON0, 1  
-    BCF	    ADCON0, 2
-    BCF	    ADCON0, 3
-    BCF	    ADCON0, 5
-    BCF	    ADCON0, 6
-    BCF	    ADCON0, 7   
 RETURN
 
 CONFIGURACION_TX_9600:
