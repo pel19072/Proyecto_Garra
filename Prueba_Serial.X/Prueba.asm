@@ -267,14 +267,14 @@ RETURN
 CONVERSION_COMPU:   	
     BSF	    PORTB, 6
     
-    SWAPF   SERVO_EJE1, 1  
-    MOVFW   SERVO_EJE1 
+    SWAPF   SERVO_EJE1, 0
+    ANDLW   b'11110000'
     ADDLW   .32
     MOVWF   CCPR1L
     MOVWF   PORTD
     
-    SWAPF   SERVO_EJE2, 1  
-    MOVFW   SERVO_EJE2
+    SWAPF   SERVO_EJE2, 0
+    ANDLW   b'11110000'
     ADDLW   .32
     MOVWF   CCPR2L    
 RETURN           
