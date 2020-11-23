@@ -40,6 +40,7 @@ GPR_VAR				UDATA
     SERVO_EJE2			RES	    1	 
     SERVO_FUN			RES	    1	 
     CUENTARX			RES	    1	 
+    DIVISION			RES	    1	 
 			
 
 ;*******************************************************************************
@@ -146,21 +147,21 @@ BANDERA_RX:
 
 	MOVLW   .48		    
 	SUBWF   RXB1,W
-	MOVWF   SERVO_GARRA
-
-	MOVLW   .48		   
-	SUBWF   RXB3,W
 	MOVWF   SERVO_EJE1
 
 	MOVLW   .48		   
-	SUBWF   RXB5,W
+	SUBWF   RXB3,W
 	MOVWF   SERVO_EJE2
+
+	MOVLW   .48		   
+	SUBWF   RXB5,W
+	MOVWF   SERVO_GARRA
 
 	MOVLW   .48		
 	SUBWF   RXB7,W
-	MOVWF   SERVO_FUN 
-	CLRF	CUENTARX	
-	BSF	PORTB, 6
+	MOVWF   SERVO_FUN
+	MOVWF	PORTD
+	CLRF	CUENTARX
 	RETURN
 
     ERRONEO:
@@ -186,23 +187,20 @@ SETUP:
 ;*******************************************************************************
 ; MAIN LOOP
 ;*******************************************************************************    
-LOOP:  
-    MOVFW   SERVO_FUN
-    MOVWF   PORTD
+LOOP:
     MOVLW   .9
-    SUBWF   SERVO_FUN
+    SUBWF   SERVO_FUN, W
     BTFSC   STATUS, Z
     GOTO    AUTOMATIC
     MANUAL:
-	BCF	PORTB, 0
 	GOTO    LOOP
     AUTOMATIC:
-	BSF	PORTB, 0
 	MOVLW	.9
-	SUBWF   SERVO_GARRA
+	SUBWF   SERVO_GARRA, W
 	BTFSC   STATUS, Z
 	GOTO    AUTOMATIC_HIGH
 	AUTOMATIC_LOW:
+	    BCF		PORTB, 0
 	    MOVLW	.253
 	    MOVWF	BAJO
 	    MOVLW	.181
@@ -210,6 +208,7 @@ LOOP:
 	    CALL	CONVERSION_COMPU
 	    GOTO	LOOP
 	AUTOMATIC_HIGH:
+	    BSF		PORTB, 0
 	    MOVLW	.250
 	    MOVWF	BAJO
 	    MOVLW	.184
@@ -220,26 +219,34 @@ LOOP:
 ;*******************************************************************************
 ; RUTINA DE CONVERSION COMPU
 ;*******************************************************************************         
-CONVERSION_COMPU:   
+CONVERSION_COMPU:   	
+    BSF	    PORTB, 6
+    
     RLF	    SERVO_EJE1, 0
-    ANDLW   b'11111110'
-    RLF	    SERVO_EJE1, 0
-    ANDLW   b'11111110'
-    RLF	    SERVO_EJE1, 0
-    ANDLW   b'11111110'
-    RLF	    SERVO_EJE1, 0
-    ANDLW   b'11111110'
+    ANDLW   b'1111110'
+    MOVWF   SERVO_EJE1
+    INCF    DIVISION, 1
+    MOVLW   .4
+    SUBWF   DIVISION, W
+    BTFSS   STATUS, Z
+    GOTO    $-7
+    CLRF    DIVISION    
+    
+    MOVFW   SERVO_EJE1
     ADDLW   .32
     MOVWF   CCPR1L
     
     RLF	    SERVO_EJE2, 0
-    ANDLW   b'11111110'
-    RLF	    SERVO_EJE2, 0
-    ANDLW   b'11111110'
-    RLF	    SERVO_EJE2, 0
-    ANDLW   b'11111110'
-    RLF	    SERVO_EJE2, 0
-    ANDLW   b'11111110'
+    ANDLW   b'1111110'
+    MOVWF   SERVO_EJE2
+    INCF    DIVISION, 1
+    MOVLW   .4
+    SUBWF   DIVISION, W
+    BTFSS   STATUS, Z
+    GOTO    $-7
+    CLRF    DIVISION 
+    
+    MOVFW   SERVO_EJE2
     ADDLW   .32
     MOVWF   CCPR2L
 RETURN           
@@ -288,6 +295,7 @@ CONFIGURACION_BASE:
     CLRF    RXB5
     CLRF    RXB6
     CLRF    RXB7
+    CLRF    DIVISION
 RETURN
     
 CONFIGURACION_PWM:
