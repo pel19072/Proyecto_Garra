@@ -160,7 +160,6 @@ BANDERA_RX:
 	MOVLW   .48		
 	SUBWF   RXB7,W
 	MOVWF   SERVO_FUN
-	MOVWF	PORTD
 	CLRF	CUENTARX
 	RETURN
 
@@ -222,33 +221,17 @@ LOOP:
 CONVERSION_COMPU:   	
     BSF	    PORTB, 6
     
-    RLF	    SERVO_EJE1, 0
-    ANDLW   b'1111110'
-    MOVWF   SERVO_EJE1
-    INCF    DIVISION, 1
-    MOVLW   .4
-    SUBWF   DIVISION, W
-    BTFSS   STATUS, Z
-    GOTO    $-7
-    CLRF    DIVISION    
-    
-    MOVFW   SERVO_EJE1
+    SWAPF   SERVO_EJE1, 1  
+    MOVFW   SERVO_EJE1 
     ADDLW   .32
     MOVWF   CCPR1L
+    MOVWF   PORTD
     
-    RLF	    SERVO_EJE2, 0
-    ANDLW   b'1111110'
-    MOVWF   SERVO_EJE2
-    INCF    DIVISION, 1
-    MOVLW   .4
-    SUBWF   DIVISION, W
-    BTFSS   STATUS, Z
-    GOTO    $-7
-    CLRF    DIVISION 
-    
+    SWAPF   SERVO_EJE2, 1  
     MOVFW   SERVO_EJE2
     ADDLW   .32
     MOVWF   CCPR2L
+    
 RETURN           
     
 ;*******************************************************************************
