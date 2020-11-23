@@ -213,15 +213,15 @@ LOOP:
 	    BCF		PORTB, 0
 	    MOVLW	.253
 	    MOVWF	BAJO
-	    MOVLW	.181
+	    MOVLW	.245
 	    MOVWF	ALTO
 	    CALL	CONVERSION_COMPU
 	    GOTO	LOOP
 	AUTOMATIC_HIGH:
 	    BSF		PORTB, 0
-	    MOVLW	.250
+	    MOVLW	.245
 	    MOVWF	BAJO
-	    MOVLW	.184
+	    MOVLW	.253
 	    MOVWF	ALTO
 	    CALL	CONVERSION_COMPU
 	    GOTO	LOOP	    
@@ -242,14 +242,14 @@ RETURN
     CONTEO:
 	MOVLW	.253
 	MOVWF	BAJO
-	MOVLW	.181
+	MOVLW	.245
 	MOVWF	ALTO
     	INCF    MODO
     RETURN
     REINICIOA:
-	MOVLW	.250
+	MOVLW	.245
 	MOVWF	BAJO
-	MOVLW	.184
+	MOVLW	.253
 	MOVWF	ALTO
 	CLRF	MODO
     RETURN   
@@ -268,13 +268,10 @@ CONVERSION_COMPU:
     BSF	    PORTB, 6
     
     SWAPF   SERVO_EJE1, 0
-    ANDLW   b'11110000'
     ADDLW   .32
     MOVWF   CCPR1L
-    MOVWF   PORTD
     
     SWAPF   SERVO_EJE2, 0
-    ANDLW   b'11110000'
     ADDLW   .32
     MOVWF   CCPR2L    
 RETURN           
@@ -283,6 +280,8 @@ RETURN
 ; RUTINA DE CONVERSION ADC
 ;*******************************************************************************         
 CONVERSION_ADC:
+    BCF	    PORTB, 6
+    
     BANKSEL ADCON0
     MOVLW   b'00000011'			
     MOVWF   ADCON0  
