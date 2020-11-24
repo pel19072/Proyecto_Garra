@@ -27,6 +27,7 @@ GPR_VAR				UDATA
     VAR_ADCX			RES	    1
     VAR_ADCY			RES	    1
     FLAG_ANTIREBOTE		RES	    1
+    TX_FLAG			RES	    1
     ALTO			RES	    1
     BAJO			RES	    1
     TOGGLE			RES	    1
@@ -38,10 +39,13 @@ GPR_VAR				UDATA
     RXB5			RES	    1	 
     RXB6			RES	    1	 
     RXB7			RES	    1	 
+    RXB8			RES	    1	 
+    RXB9			RES	    1	 
     SERVO_GARRA			RES	    1	 
     SERVO_EJE1			RES	    1	 
     SERVO_EJE2			RES	    1	 
     SERVO_FUN			RES	    1	 
+    USUARIO			RES	    1	 
     CUENTARX			RES	    1	 
     DIVISION			RES	    1	 
     CONT1			RES	    1	 
@@ -100,6 +104,12 @@ BANDERA_TIMER0:
 
 BANDERA_RX:    
     INCF    CUENTARX,1	
+    MOVFW   RXB8		    
+    MOVWF   RXB9
+    
+    MOVFW   RXB7		    
+    MOVWF   RXB8
+    
     MOVFW   RXB6		    
     MOVWF   RXB7
     
@@ -130,7 +140,7 @@ BANDERA_RX:
     RETURN
     
     VERIFICACION:  
-	MOVLW   .8			    
+	MOVLW   .10			    
 	SUBWF   CUENTARX,W
 	BTFSS   STATUS,Z
 	GOTO    ERRONEO
@@ -150,20 +160,29 @@ BANDERA_RX:
 	BTFSS	STATUS,Z
 	GOTO	ERRONEO
 
+	MOVLW	.44		
+	SUBWF	RXB8,W
+	BTFSS	STATUS,Z
+	GOTO	ERRONEO
+	
 	MOVLW   .48		    
 	SUBWF   RXB1,W
+	MOVWF   USUARIO
+	
+	MOVLW   .48		    
+	SUBWF   RXB3,W
 	MOVWF   SERVO_EJE1
 
 	MOVLW   .48		   
-	SUBWF   RXB3,W
+	SUBWF   RXB5,W
 	MOVWF   SERVO_EJE2
 
 	MOVLW   .48		   
-	SUBWF   RXB5,W
+	SUBWF   RXB7,W
 	MOVWF   SERVO_GARRA
 
 	MOVLW   .48		
-	SUBWF   RXB7,W
+	SUBWF   RXB9,W
 	MOVWF   SERVO_FUN
 	CLRF	CUENTARX
 	RETURN
@@ -171,11 +190,35 @@ BANDERA_RX:
     ERRONEO:
 	CLRF    CUENTARX		
 	RETURN      
-    
+ 
+;*******************************************************************************
+; TABLA DE CONVERSIONES
+;*******************************************************************************
+; SE USARA ESTA TABLA PARA REALIZAR LAS CONVERSIONES A ASCII 
+; Y ENVIAR LOS DATOS EN EL FORMATO DESEADO   
+CONVERSIONES:       
+    ANDLW   b'00001111'	
+    ADDWF   PCL, F
+    RETLW   .48		;0 
+    RETLW   .49		;1 
+    RETLW   .50		;2 
+    RETLW   .51		;3 
+    RETLW   .52		;4 
+    RETLW   .53		;5 
+    RETLW   .54		;6 
+    RETLW   .55		;7 
+    RETLW   .56		;8
+    RETLW   .57		;9 
+    RETLW   .65		;A   
+    RETLW   .66		;B   
+    RETLW   .67		;C  
+    RETLW   .68		;D   
+    RETLW   .69		;E  
+    RETLW   .70		;F 	
+	
 ;*******************************************************************************
 ; MAIN PROGRAM
 ;*******************************************************************************
-
 MAIN_PROG   CODE     0x0100                 ; let linker place main program
 
 START
@@ -193,6 +236,7 @@ SETUP:
 ; MAIN LOOP
 ;*******************************************************************************    
 LOOP:
+    CALL    RUTINA_TX
     MOVLW   .9
     SUBWF   SERVO_FUN, W
     BTFSC   STATUS, Z
@@ -226,6 +270,20 @@ LOOP:
 	    CALL	CONVERSION_COMPU
 	    GOTO	LOOP	    
 
+;*******************************************************************************
+; RUTINA ENVIO
+;*******************************************************************************             
+RUTINA_TX:    
+    MOVLW  .5 ;LAST_USER			
+    CALL   CONVERSIONES		
+    MOVWF  TXREG
+    CALL   DELAY_BIG
+        
+    MOVLW  .10			 
+    MOVWF  TXREG
+    CALL   DELAY_BIG
+RETURN 	    
+	    
 ;*******************************************************************************
 ; RUTINA DE SELECCIÓN DE MODOS DE FUNCIONAMIENTO
 ;*******************************************************************************    
@@ -322,11 +380,18 @@ RETURN
 ; RUTINA DE DELAYS
 ;*******************************************************************************                
 DELAY:
-    MOVLW   .60			    
+    MOVLW   .80			    
     MOVWF   CONT1
     DECFSZ  CONT1, F
     GOTO    $-1                       
-RETURN    
+RETURN  
+    
+DELAY_BIG:
+    MOVLW   .60			    
+    MOVWF   CONT1
+    DECFSZ  CONT1, F
+    GOTO    $-1                      
+RETURN     
 ;*******************************************************************************
 ; CONFIGURACIONES
 ;*******************************************************************************         
@@ -359,6 +424,7 @@ CONFIGURACION_BASE:
     
     BANKSEL PORTA
     CLRF    FLAG_ANTIREBOTE
+    CLRF    TX_FLAG
     CLRF    VAR_ADCX  
     CLRF    VAR_ADCY  
     CLRF    MODO
@@ -378,6 +444,9 @@ CONFIGURACION_BASE:
     CLRF    RXB5
     CLRF    RXB6
     CLRF    RXB7
+    CLRF    RXB8
+    CLRF    RXB9
+    CLRF    USUARIO
     CLRF    DIVISION
 RETURN
     
