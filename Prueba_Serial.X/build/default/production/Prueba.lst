@@ -1,4 +1,4 @@
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE  1
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:34:35         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -57,7 +57,7 @@ Warning[207]: Found label after column 1. (TOGGLE)
 0007                  00032     TOGGLE                      RES         1
 Warning[207]: Found label after column 1. (RXB0)
 0008                  00033     RXB0                        RES         1    
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE  2
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:34:35         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -116,7 +116,7 @@ Warning[207]: Found label after column 1. (MODO)
 0006   0E03           00067     SWAPF   STATUS, W
 0007   00??           00068     MOVWF   STATUS_TEMP
                       00069 
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE  3
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:34:35         PAGE  3
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -175,7 +175,7 @@ Warning[207]: Found label after column 1. (LOW_OPEN)
 0029   00??           00116     MOVWF   RXB3        
                       00117     
 002A   08??           00118     MOVFW   RXB1                    
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE  4
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:34:35         PAGE  4
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -234,7 +234,7 @@ Warning[207]: Found label after column 1. (VERIFICACION)
 0050   01??           00168         CLRF    CUENTARX
 0051   0008           00169         RETURN
                       00170 
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE  5
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:34:35         PAGE  5
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -293,7 +293,7 @@ Warning[207]: Found label after column 1. (AUTOMATIC_LOW)
 011A   00??           00217             MOVWF       ALTO
 011B   2???           00218             CALL        CONVERSION_COMPU
 011C   2???           00219             GOTO        LOOP
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE  6
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:34:35         PAGE  6
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -352,7 +352,7 @@ Warning[207]: Found label after column 1. (REINICIOA)
 Warning[203]: Found opcode in column 1. (RETURN)
 013A   0008           00262 RETURN      
                       00263             
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE  7
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:34:35         PAGE  7
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -411,7 +411,7 @@ Warning[203]: Found opcode in column 1. (RETURN)
 015F   00??           00313     MOVWF   VAR_ADCX
                       00314     
 0160   0C??           00315     RRF     VAR_ADCX, 0
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE  8
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:34:35         PAGE  8
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -470,7 +470,7 @@ Message[302]: Register in operand not in bank 0.  Ensure that bank bits are corr
 017E   1381           00354     BCF     OPTION_REG, 7
                       00355     
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE  9
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:34:35         PAGE  9
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -529,7 +529,7 @@ Warning[207]: Found label after column 1. (SERVO2)
 01AA   149D           00401     BSF     CCP2CON, 1
 01AB   141D           00402     BSF     CCP2CON, 0
 Warning[203]: Found opcode in column 1. (RETURN)
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE 10
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:34:35         PAGE 10
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -588,7 +588,7 @@ Message[302]: Register in operand not in bank 0.  Ensure that bank bits are corr
 01CD   1187           00443     BCF     BAUDCTL, BRG16  ; PARA LOGRAR UN BAUD DE 9600 CON UN FOSC DE 4MHz
                       00444     
 01CE   1683 1303      00445     BANKSEL TRISA
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE 11
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:34:35         PAGE 11
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -631,7 +631,7 @@ Warning[203]: Found opcode in column 1. (RETURN)
                       00473 ;*******************************************************************************
                       00474     
 20D4 3FFF             00475     END 
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE 12
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:34:35         PAGE 12
 
 
 SYMBOL TABLE
@@ -690,7 +690,7 @@ BRG13                             00000005
 BRG14                             00000006
 BRG15                             00000007
 BRG16                             00000003
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE 13
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:34:35         PAGE 13
 
 
 SYMBOL TABLE
@@ -749,7 +749,7 @@ CCP2X                             00000005
 CCP2Y                             00000004
 CCPR1                             00000015
 CCPR1H                            00000016
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE 14
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:34:35         PAGE 14
 
 
 SYMBOL TABLE
@@ -808,7 +808,7 @@ EEDATA                            0000010C
 EEDATH                            0000010E
 EEIE                              00000004
 EEIF                              00000004
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE 15
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:34:35         PAGE 15
 
 
 SYMBOL TABLE
@@ -867,7 +867,7 @@ MSK3                              00000003
 MSK4                              00000004
 MSK5                              00000005
 MSK6                              00000006
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE 16
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:34:35         PAGE 16
 
 
 SYMBOL TABLE
@@ -926,7 +926,7 @@ PS0                               00000000
 PS1                               00000001
 PS2                               00000002
 PSA                               00000003
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE 17
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:34:35         PAGE 17
 
 
 SYMBOL TABLE
@@ -985,7 +985,7 @@ RD3                               00000003
 RD4                               00000004
 RD5                               00000005
 RD6                               00000006
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE 18
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:34:35         PAGE 18
 
 
 SYMBOL TABLE
@@ -1044,7 +1044,7 @@ SSPIF                             00000003
 SSPM0                             00000000
 SSPM1                             00000001
 SSPM2                             00000002
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE 19
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:34:35         PAGE 19
 
 
 SYMBOL TABLE
@@ -1103,7 +1103,7 @@ TOUTPS3                           00000006
 TRISA                             00000085
 TRISA0                            00000000
 TRISA1                            00000001
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE 20
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:34:35         PAGE 20
 
 
 SYMBOL TABLE
@@ -1162,7 +1162,7 @@ TXIE                              00000004
 TXIF                              00000004
 TXREG                             00000019
 TXSTA                             00000098
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE 21
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:34:35         PAGE 21
 
 
 SYMBOL TABLE
@@ -1221,7 +1221,7 @@ _BOR_OFF                          00003CFF
 _BOR_ON                           00003FFF
 _BOR_SBODEN                       00003DFF
 _CONFIG1                          00002007
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE 22
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:34:35         PAGE 22
 
 
 SYMBOL TABLE
@@ -1280,7 +1280,7 @@ _WRT_256                          00003DFF
 _WRT_HALF                         000039FF
 _WRT_OFF                          00003FFF
 _XT_OSC                           00003FF9
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE 23
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:34:35         PAGE 23
 
 
 SYMBOL TABLE
