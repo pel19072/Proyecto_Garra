@@ -46,6 +46,8 @@ GPR_VAR				UDATA
     SERVO_EJE2			RES	    1	 
     SERVO_FUN			RES	    1	 
     USUARIO			RES	    1	 
+    LAST_USER			RES	    1	 
+    USER_FLAG			RES	    1	 
     CUENTARX			RES	    1	 
     DIVISION			RES	    1	 
     CONT1			RES	    1	 
@@ -236,7 +238,8 @@ SETUP:
 ; MAIN LOOP
 ;*******************************************************************************    
 LOOP:
-    CALL    RUTINA_TX
+    ;CALL    RUTINA_TX
+    CALL    EEPROM_ESCRITURA
     MOVLW   .9
     SUBWF   SERVO_FUN, W
     BTFSC   STATUS, Z
@@ -254,7 +257,6 @@ LOOP:
 	BTFSC   STATUS, Z
 	GOTO    AUTOMATIC_HIGH
 	AUTOMATIC_LOW:
-	    BCF		PORTB, 0
 	    MOVLW	.253
 	    MOVWF	BAJO
 	    MOVLW	.245
@@ -262,7 +264,6 @@ LOOP:
 	    CALL	CONVERSION_COMPU
 	    GOTO	LOOP
 	AUTOMATIC_HIGH:
-	    BSF		PORTB, 0
 	    MOVLW	.245
 	    MOVWF	BAJO
 	    MOVLW	.253
@@ -270,6 +271,60 @@ LOOP:
 	    CALL	CONVERSION_COMPU
 	    GOTO	LOOP	    
 
+;*******************************************************************************
+; RUTINA EEPROM
+;*******************************************************************************	    
+EEPROM_ESCRITURA:
+    MOVFW   USUARIO
+    SUBWF   USER_FLAG, W
+    BTFSC   STATUS, Z
+RETURN
+    MOVFW   USUARIO
+    MOVWF   USER_FLAG
+    BANKSEL EEADR
+    MOVLW   .0
+    MOVWF   EEADR
+    BANKSEL PORTA
+    MOVFW   USUARIO
+    BANKSEL EEDAT
+    MOVWF   EEDAT
+    BANKSEL EECON1
+    BCF	    EECON1, EEPGD
+    BSF	    EECON1, WREN
+    
+    BCF	    INTCON, GIE
+    MOVLW   0x55
+    MOVWF   EECON2
+    MOVLW   0xAA
+    MOVWF   EECON2
+    BSF	    EECON1, WR
+    BSF	    INTCON, GIE
+    
+    BCF	    EECON1, WREN
+    BANKSEL PORTA
+    CALL    EEPROM_LECTURA
+RETURN	    
+
+;*******************************************************************************
+; RUTINA DE LECTURA DE LA EEPROM
+;*******************************************************************************        
+EEPROM_LECTURA:
+    BCF	    INTCON, GIE
+    MOVLW   .0
+    BANKSEL EEADR
+    MOVWF   EEADR
+    BANKSEL EECON1
+    BCF	    EECON1, EEPGD
+    BSF	    EECON1, RD
+    BANKSEL EEDATA
+    MOVFW   EEDATA
+    BANKSEL PORTA
+    MOVWF   LAST_USER
+    BSF	    INTCON, GIE
+    MOVFW   LAST_USER
+    MOVWF   PORTD
+RETURN    
+    
 ;*******************************************************************************
 ; RUTINA ENVIO
 ;*******************************************************************************             
@@ -322,9 +377,7 @@ RETURN
 ;*******************************************************************************
 ; RUTINA DE CONVERSION COMPU
 ;*******************************************************************************         
-CONVERSION_COMPU:   	
-    BSF	    PORTB, 6
-    
+CONVERSION_COMPU:   
     SWAPF   SERVO_EJE1, 0
     ADDLW   .32
     MOVWF   CCPR1L    
@@ -337,8 +390,6 @@ RETURN
 ; RUTINA DE CONVERSION ADC
 ;*******************************************************************************         
 CONVERSION_ADC:
-    BCF	    PORTB, 6
-    
     BANKSEL ADCON0
     MOVLW   b'00000011'			
     MOVWF   ADCON0  
@@ -447,6 +498,8 @@ CONFIGURACION_BASE:
     CLRF    RXB8
     CLRF    RXB9
     CLRF    USUARIO
+    CLRF    LAST_USER
+    CLRF    USER_FLAG
     CLRF    DIVISION
 RETURN
     

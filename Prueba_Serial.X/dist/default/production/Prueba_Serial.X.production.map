@@ -1,5 +1,5 @@
 MPLINK 5.08, LINKER
-Linker Map File - Created Tue Nov 24 16:31:46 2020
+Linker Map File - Created Tue Nov 24 17:09:22 2020
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -7,10 +7,10 @@ Linker Map File - Created Tue Nov 24 16:31:46 2020
                  RES_VECT       code   0x000000    program   0x000002
                    .cinit    romdata   0x000001    program   0x000004
                ISR_VECTOR       code   0x000004    program   0x0000da
-                MAIN_PROG       code   0x000100    program   0x0001f8
+                MAIN_PROG       code   0x000100    program   0x00025a
 .config_2007_BUILD/DEFAULT/PRODUCTION/PRUEBA.       code   0x002007    program   0x000002
 .config_2008_BUILD/DEFAULT/PRODUCTION/PRUEBA.       code   0x002008    program   0x000002
-                  GPR_VAR      udata   0x000020       data   0x00001c
+                  GPR_VAR      udata   0x000020       data   0x00001e
 
 
 
@@ -19,62 +19,65 @@ Linker Map File - Created Tue Nov 24 16:31:46 2020
                            ---------   ---------      
                             0x000000    0x000002      
                             0x000004    0x000070      
-                            0x000100    0x0001fb      
+                            0x000100    0x00022c      
                             0x002007    0x002008      
-            366 out of 8455 program addresses used, program memory utilization is 4%
+            415 out of 8455 program addresses used, program memory utilization is 4%
 
 
 
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                    ANTIR   0x000142    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+                    ANTIR   0x000173    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
                 AUTOMATIC   0x000113    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-           AUTOMATIC_HIGH   0x00011e    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+           AUTOMATIC_HIGH   0x00011d    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
             AUTOMATIC_LOW   0x000117    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
                BANDERA_RX   0x00001f    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
            BANDERA_TIMER0   0x000011    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-        CONFIGURACION_ADC   0x0001ef    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-       CONFIGURACION_BASE   0x000178    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-CONFIGURACION_INTERRUPCION   0x0001cc    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-        CONFIGURACION_PWM   0x0001ac    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-         CONFIGURACION_RX   0x0001e9    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-     CONFIGURACION_TIMER0   0x0001bf    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-     CONFIGURACION_TIMER2   0x0001c7    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-    CONFIGURACION_TX_9600   0x0001d8    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-                   CONTEO   0x000136    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+        CONFIGURACION_ADC   0x000220    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+       CONFIGURACION_BASE   0x0001a7    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+CONFIGURACION_INTERRUPCION   0x0001fd    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+        CONFIGURACION_PWM   0x0001dd    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+         CONFIGURACION_RX   0x00021a    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+     CONFIGURACION_TIMER0   0x0001f0    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+     CONFIGURACION_TIMER2   0x0001f8    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+    CONFIGURACION_TX_9600   0x000209    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+                   CONTEO   0x000167    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
              CONVERSIONES   0x00005f    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-           CONVERSION_ADC   0x00014c    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-         CONVERSION_COMPU   0x000144    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-                    DELAY   0x00016e    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-                DELAY_BIG   0x000173    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+           CONVERSION_ADC   0x00017c    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+         CONVERSION_COMPU   0x000175    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+                    DELAY   0x00019d    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+                DELAY_BIG   0x0001a2    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+         EEPROM_ESCRITURA   0x000123    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+           EEPROM_LECTURA   0x000143    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
                   ERRONEO   0x00005d    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
                 HIGH_OPEN   0x000013    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
                       ISR   0x000008    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
                      LOOP   0x000108    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
                  LOW_OPEN   0x000019    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
                    MANUAL   0x00010d    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-      MODO_FUNCIONAMIENTO   0x00012d    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+      MODO_FUNCIONAMIENTO   0x00015e    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
                       POP   0x00000c    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
                      PUSH   0x000004    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-                REINICIOA   0x00013c    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-                RUTINA_TX   0x000125    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-                   SERVO1   0x0001ac    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-                   SERVO2   0x0001b6    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+                REINICIOA   0x00016d    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+                RUTINA_TX   0x000156    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+                   SERVO1   0x0001dd    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+                   SERVO2   0x0001e7    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
                     SETUP   0x000100    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
                     START   0x000100    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
              VERIFICACION   0x000038    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-          _MAIN_PROG_0154   0x000154    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-          _MAIN_PROG_0164   0x000164    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-          _MAIN_PROG_0171   0x000171    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-          _MAIN_PROG_0176   0x000176    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+          _MAIN_PROG_0183   0x000183    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+          _MAIN_PROG_0193   0x000193    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+          _MAIN_PROG_01A0   0x0001a0    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+          _MAIN_PROG_01A5   0x0001a5    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
                      ALTO   0x000026       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
                      BAJO   0x000027       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-                    CONT1   0x00003a       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-                 CUENTARX   0x000038       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-                 DIVISION   0x000039       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+                    CONT1   0x00003c       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+                 CUENTARX   0x00003a       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+                 DIVISION   0x00003b       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
           FLAG_ANTIREBOTE   0x000024       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-                     MODO   0x00003b       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+                LAST_USER   0x000038       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+                     MODO   0x00003d       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
                      RXB0   0x000029       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
                      RXB1   0x00002a       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
                      RXB2   0x00002b       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
@@ -92,6 +95,7 @@ CONFIGURACION_INTERRUPCION   0x0001cc    program     static E:\UVG\Semestre 4\Mi
               STATUS_TEMP   0x000021       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
                    TOGGLE   0x000028       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
                   TX_FLAG   0x000025       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+                USER_FLAG   0x000039       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
                   USUARIO   0x000037       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
                  VAR_ADCX   0x000022       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
                  VAR_ADCY   0x000023       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
@@ -118,30 +122,32 @@ CONFIGURACION_INTERRUPCION   0x0001cc    program     static E:\UVG\Semestre 4\Mi
                    MANUAL   0x00010d    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
                 AUTOMATIC   0x000113    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
             AUTOMATIC_LOW   0x000117    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-           AUTOMATIC_HIGH   0x00011e    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-                RUTINA_TX   0x000125    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-      MODO_FUNCIONAMIENTO   0x00012d    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-                   CONTEO   0x000136    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-                REINICIOA   0x00013c    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-                    ANTIR   0x000142    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-         CONVERSION_COMPU   0x000144    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-           CONVERSION_ADC   0x00014c    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-          _MAIN_PROG_0154   0x000154    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-          _MAIN_PROG_0164   0x000164    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-                    DELAY   0x00016e    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-          _MAIN_PROG_0171   0x000171    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-                DELAY_BIG   0x000173    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-          _MAIN_PROG_0176   0x000176    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-       CONFIGURACION_BASE   0x000178    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-                   SERVO1   0x0001ac    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-        CONFIGURACION_PWM   0x0001ac    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-                   SERVO2   0x0001b6    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-     CONFIGURACION_TIMER0   0x0001bf    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-     CONFIGURACION_TIMER2   0x0001c7    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-CONFIGURACION_INTERRUPCION   0x0001cc    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-    CONFIGURACION_TX_9600   0x0001d8    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-         CONFIGURACION_RX   0x0001e9    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-        CONFIGURACION_ADC   0x0001ef    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+           AUTOMATIC_HIGH   0x00011d    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+         EEPROM_ESCRITURA   0x000123    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+           EEPROM_LECTURA   0x000143    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+                RUTINA_TX   0x000156    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+      MODO_FUNCIONAMIENTO   0x00015e    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+                   CONTEO   0x000167    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+                REINICIOA   0x00016d    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+                    ANTIR   0x000173    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+         CONVERSION_COMPU   0x000175    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+           CONVERSION_ADC   0x00017c    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+          _MAIN_PROG_0183   0x000183    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+          _MAIN_PROG_0193   0x000193    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+                    DELAY   0x00019d    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+          _MAIN_PROG_01A0   0x0001a0    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+                DELAY_BIG   0x0001a2    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+          _MAIN_PROG_01A5   0x0001a5    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+       CONFIGURACION_BASE   0x0001a7    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+                   SERVO1   0x0001dd    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+        CONFIGURACION_PWM   0x0001dd    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+                   SERVO2   0x0001e7    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+     CONFIGURACION_TIMER0   0x0001f0    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+     CONFIGURACION_TIMER2   0x0001f8    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+CONFIGURACION_INTERRUPCION   0x0001fd    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+    CONFIGURACION_TX_9600   0x000209    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+         CONFIGURACION_RX   0x00021a    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+        CONFIGURACION_ADC   0x000220    program     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
                    W_TEMP   0x000020       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
               STATUS_TEMP   0x000021       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
                  VAR_ADCX   0x000022       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
@@ -166,9 +172,11 @@ CONFIGURACION_INTERRUPCION   0x0001cc    program     static E:\UVG\Semestre 4\Mi
                SERVO_EJE2   0x000035       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
                 SERVO_FUN   0x000036       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
                   USUARIO   0x000037       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-                 CUENTARX   0x000038       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-                 DIVISION   0x000039       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-                    CONT1   0x00003a       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
-                     MODO   0x00003b       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+                LAST_USER   0x000038       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+                USER_FLAG   0x000039       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+                 CUENTARX   0x00003a       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+                 DIVISION   0x00003b       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+                    CONT1   0x00003c       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
+                     MODO   0x00003d       data     static E:\UVG\Semestre 4\Micros\Proyecto_Garra\Prueba_Serial.X\Prueba.asm
 
 
