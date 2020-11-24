@@ -1,4 +1,4 @@
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  17:53:55         PAGE  1
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -57,7 +57,7 @@ Warning[207]: Found label after column 1. (TOGGLE)
 0007                  00032     TOGGLE                      RES         1
 Warning[207]: Found label after column 1. (RXB0)
 0008                  00033     RXB0                        RES         1    
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  17:53:55         PAGE  2
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -116,7 +116,7 @@ Warning[207]: Found label after column 1. (MODO)
 0006   0E03           00067     SWAPF   STATUS, W
 0007   00??           00068     MOVWF   STATUS_TEMP
                       00069 
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  17:53:55         PAGE  3
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE  3
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -175,7 +175,7 @@ Warning[207]: Found label after column 1. (LOW_OPEN)
 0029   00??           00116     MOVWF   RXB3        
                       00117     
 002A   08??           00118     MOVFW   RXB1                    
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  17:53:55         PAGE  4
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE  4
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -234,7 +234,7 @@ Warning[207]: Found label after column 1. (VERIFICACION)
 0050   01??           00168         CLRF    CUENTARX
 0051   0008           00169         RETURN
                       00170 
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  17:53:55         PAGE  5
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE  5
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -293,7 +293,7 @@ Warning[207]: Found label after column 1. (AUTOMATIC_LOW)
 011A   00??           00217             MOVWF       ALTO
 011B   2???           00218             CALL        CONVERSION_COMPU
 011C   2???           00219             GOTO        LOOP
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  17:53:55         PAGE  6
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE  6
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -352,7 +352,7 @@ Warning[207]: Found label after column 1. (REINICIOA)
 Warning[203]: Found opcode in column 1. (RETURN)
 013A   0008           00262 RETURN      
                       00263             
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  17:53:55         PAGE  7
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE  7
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -366,272 +366,272 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00269     
 013C   0E??           00270     SWAPF   SERVO_EJE1, 0
 013D   3E20           00271     ADDLW   .32
-013E   0095           00272     MOVWF   CCPR1L
-                      00273     
-013F   0E??           00274     SWAPF   SERVO_EJE2, 0
-0140   3E20           00275     ADDLW   .32
-0141   009B           00276     MOVWF   CCPR2L    
+013E   0095           00272     MOVWF   CCPR1L    
+013F   0E??           00273     SWAPF   SERVO_EJE2, 0
+0140   3E20           00274     ADDLW   .32
+0141   009B           00275     MOVWF   CCPR2L    
 Warning[203]: Found opcode in column 1. (RETURN)
-0142   0008           00277 RETURN           
-                      00278  
-                      00279 ;*******************************************************************************
-                      00280 ; RUTINA DE CONVERSION ADC
-                      00281 ;*******************************************************************************         
-0143                  00282 CONVERSION_ADC:
-0143   1306           00283     BCF     PORTB, 6
-                      00284     
-0144   1283 1303      00285     BANKSEL ADCON0
-0146   3003           00286     MOVLW   b'00000011'                 
-0147   009F           00287     MOVWF   ADCON0  
-0148   2???           00288     CALL    DELAY
-                      00289    
-0149   149F           00290     BSF     ADCON0,GO
-014A   189F           00291     BTFSC   ADCON0,GO 
-014B   2???           00292     GOTO    $-1
-                      00293     
-014C   1283 1303      00294     BANKSEL ADRESH
-014E   081E           00295     MOVFW   ADRESH
-014F   00??           00296     MOVWF   VAR_ADCY    
-                      00297     
-0150   0C??           00298     RRF     VAR_ADCY, 0
-0151   397F           00299     ANDLW   b'01111111'
-0152   3E20           00300     ADDLW   .32
-0153   009B           00301     MOVWF   CCPR2L 
-                      00302     
-0154   1283 1303      00303     BANKSEL ADCON0
-0156   3013           00304     MOVLW   b'00010011'                 
-0157   009F           00305     MOVWF   ADCON0
-0158   2???           00306     CALL    DELAY
-                      00307     
-0159   149F           00308     BSF     ADCON0,GO
-015A   189F           00309     BTFSC   ADCON0,GO 
-015B   2???           00310     GOTO    $-1
-                      00311     
-015C   1283 1303      00312     BANKSEL ADRESH
-015E   081E           00313     MOVFW   ADRESH
-015F   00??           00314     MOVWF   VAR_ADCX
-                      00315     
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  17:53:55         PAGE  8
+0142   0008           00276 RETURN           
+                      00277  
+                      00278 ;*******************************************************************************
+                      00279 ; RUTINA DE CONVERSION ADC
+                      00280 ;*******************************************************************************         
+0143                  00281 CONVERSION_ADC:
+0143   1306           00282     BCF     PORTB, 6
+                      00283     
+0144   1283 1303      00284     BANKSEL ADCON0
+0146   3003           00285     MOVLW   b'00000011'                 
+0147   009F           00286     MOVWF   ADCON0  
+0148   2???           00287     CALL    DELAY
+                      00288    
+0149   149F           00289     BSF     ADCON0,GO
+014A   189F           00290     BTFSC   ADCON0,GO 
+014B   2???           00291     GOTO    $-1
+                      00292     
+014C   1283 1303      00293     BANKSEL ADRESH
+014E   081E           00294     MOVFW   ADRESH
+014F   00??           00295     MOVWF   VAR_ADCY    
+                      00296     
+0150   0C??           00297     RRF     VAR_ADCY, 0
+0151   397F           00298     ANDLW   b'01111111'
+0152   3E20           00299     ADDLW   .32
+0153   009B           00300     MOVWF   CCPR2L 
+                      00301     
+0154   1283 1303      00302     BANKSEL ADCON0
+0156   3013           00303     MOVLW   b'00010011'                 
+0157   009F           00304     MOVWF   ADCON0
+0158   2???           00305     CALL    DELAY
+                      00306     
+0159   149F           00307     BSF     ADCON0,GO
+015A   189F           00308     BTFSC   ADCON0,GO 
+015B   2???           00309     GOTO    $-1
+                      00310     
+015C   1283 1303      00311     BANKSEL ADRESH
+015E   081E           00312     MOVFW   ADRESH
+015F   00??           00313     MOVWF   VAR_ADCX
+                      00314     
+0160   0C??           00315     RRF     VAR_ADCX, 0
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE  8
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-0160   0C??           00316     RRF     VAR_ADCX, 0
-0161   397F           00317     ANDLW   b'01111111'
-0162   3E20           00318     ADDLW   .32
-0163   0095           00319     MOVWF   CCPR1L
+0161   397F           00316     ANDLW   b'01111111'
+0162   3E20           00317     ADDLW   .32
+0163   0095           00318     MOVWF   CCPR1L
 Warning[203]: Found opcode in column 1. (RETURN)
-0164   0008           00320 RETURN 
-                      00321     
-                      00322 ;*******************************************************************************
-                      00323 ; RUTINA DE DELAYS
-                      00324 ;*******************************************************************************                
-0165                  00325 DELAY:
-0165   303C           00326     MOVLW   .60                     
-0166   00??           00327     MOVWF   CONT1
-0167   0B??           00328     DECFSZ  CONT1, F
-0168   2???           00329     GOTO    $-1                       
+0164   0008           00319 RETURN 
+                      00320     
+                      00321 ;*******************************************************************************
+                      00322 ; RUTINA DE DELAYS
+                      00323 ;*******************************************************************************                
+0165                  00324 DELAY:
+0165   303C           00325     MOVLW   .60                     
+0166   00??           00326     MOVWF   CONT1
+0167   0B??           00327     DECFSZ  CONT1, F
+0168   2???           00328     GOTO    $-1                       
 Warning[203]: Found opcode in column 1. (RETURN)
-0169   0008           00330 RETURN    
-                      00331 ;*******************************************************************************
-                      00332 ; CONFIGURACIONES
-                      00333 ;*******************************************************************************         
-016A                  00334 CONFIGURACION_BASE:
-016A   1283 1303      00335     BANKSEL PORTA
-016C   0185           00336     CLRF    PORTA               ; LIMPIA LOS PUERTOS PARA EVITAR QUE TENGAN CUALQUIER VALOR INICIAL DIST
+0169   0008           00329 RETURN    
+                      00330 ;*******************************************************************************
+                      00331 ; CONFIGURACIONES
+                      00332 ;*******************************************************************************         
+016A                  00333 CONFIGURACION_BASE:
+016A   1283 1303      00334     BANKSEL PORTA
+016C   0185           00335     CLRF    PORTA               ; LIMPIA LOS PUERTOS PARA EVITAR QUE TENGAN CUALQUIER VALOR INICIAL DIST
                             INTO DE 0
-016D   0186           00337     CLRF    PORTB
-016E   0187           00338     CLRF    PORTC
-016F   0188           00339     CLRF    PORTD
-0170   0189           00340     CLRF    PORTE
-                      00341 
-0171   1683 1703      00342     BANKSEL ANSEL
+016D   0186           00336     CLRF    PORTB
+016E   0187           00337     CLRF    PORTC
+016F   0188           00338     CLRF    PORTD
+0170   0189           00339     CLRF    PORTE
+                      00340 
+0171   1683 1703      00341     BANKSEL ANSEL
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0173   0188           00343     CLRF    ANSEL
+0173   0188           00342     CLRF    ANSEL
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0174   1408           00344     BSF     ANSEL, 0            ; POT EN X
+0174   1408           00343     BSF     ANSEL, 0            ; POT EN X
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0175   1688           00345     BSF     ANSEL, 5            ; POT EN Y
+0175   1688           00344     BSF     ANSEL, 5            ; POT EN Y
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0176   0189           00346     CLRF    ANSELH              ; BORRA EL CONTROL DE ENTRADAS ANALÓGICAS       
-                      00347 
-0177   1683 1303      00348     BANKSEL TRISA
+0176   0189           00345     CLRF    ANSELH              ; BORRA EL CONTROL DE ENTRADAS ANALÓGICAS       
+                      00346 
+0177   1683 1303      00347     BANKSEL TRISA
+0179   3021           00348     MOVLW   b'00100001'         ; POT Y TRANSISTORES
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0179   0185           00349     CLRF    TRISA
+017A   0085           00349     MOVWF   TRISA
                       00350                 
-017A   3080           00351     MOVLW   b'10000000'         ; PUSHES EN EL PUERTO B PARA INCLUIR LOS PULL UPS POR SOFTWARE - TIENE 4
+017B   3080           00351     MOVLW   b'10000000'         ; PUSHES EN EL PUERTO B PARA INCLUIR LOS PULL UPS POR SOFTWARE - TIENE 4
                              SALIDAS PUES SE CONECTARON AHÍ LOS TRANSISTORES (NPN 3904)
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-017B   0086           00352     MOVWF   TRISB
+017C   0086           00352     MOVWF   TRISB
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-017C   0095           00353     MOVWF   WPUB                ; PARA PULL UPS
+017D   0095           00353     MOVWF   WPUB                ; PARA PULL UPS
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-017D   1381           00354     BCF     OPTION_REG, 7
+017E   1381           00354     BCF     OPTION_REG, 7
                       00355     
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  17:53:55         PAGE  9
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE  9
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-017E   0187           00356     CLRF    TRISC               ; SIN USAR
+017F   0187           00356     CLRF    TRISC               ; SIN USAR
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-017F   0188           00357     CLRF    TRISD               ; PARA DISPLAY    
+0180   0188           00357     CLRF    TRISD               ; PARA DISPLAY    
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0180   0189           00358     CLRF    TRISE
+0181   0189           00358     CLRF    TRISE
                       00359     
-0181   1283 1303      00360     BANKSEL PORTA
-0183   01??           00361     CLRF    FLAG_ANTIREBOTE
-0184   01??           00362     CLRF    VAR_ADCX  
-0185   01??           00363     CLRF    VAR_ADCY  
-0186   01??           00364     CLRF    MODO
-0187   01??           00365     CLRF    ALTO
-0188   01??           00366     CLRF    BAJO
-0189   01??           00367     CLRF    TOGGLE
-018A   01??           00368     CLRF    SERVO_GARRA
-018B   01??           00369     CLRF    SERVO_EJE1
-018C   01??           00370     CLRF    SERVO_EJE2
-018D   01??           00371     CLRF    SERVO_FUN
-018E   01??           00372     CLRF    CUENTARX
-018F   01??           00373     CLRF    RXB0
-0190   01??           00374     CLRF    RXB1
-0191   01??           00375     CLRF    RXB2
-0192   01??           00376     CLRF    RXB3
-0193   01??           00377     CLRF    RXB4
-0194   01??           00378     CLRF    RXB5
-0195   01??           00379     CLRF    RXB6
-0196   01??           00380     CLRF    RXB7
-0197   01??           00381     CLRF    DIVISION
+0182   1283 1303      00360     BANKSEL PORTA
+0184   01??           00361     CLRF    FLAG_ANTIREBOTE
+0185   01??           00362     CLRF    VAR_ADCX  
+0186   01??           00363     CLRF    VAR_ADCY  
+0187   01??           00364     CLRF    MODO
+0188   01??           00365     CLRF    ALTO
+0189   01??           00366     CLRF    BAJO
+018A   01??           00367     CLRF    TOGGLE
+018B   01??           00368     CLRF    SERVO_GARRA
+018C   01??           00369     CLRF    SERVO_EJE1
+018D   01??           00370     CLRF    SERVO_EJE2
+018E   01??           00371     CLRF    SERVO_FUN
+018F   01??           00372     CLRF    CUENTARX
+0190   01??           00373     CLRF    RXB0
+0191   01??           00374     CLRF    RXB1
+0192   01??           00375     CLRF    RXB2
+0193   01??           00376     CLRF    RXB3
+0194   01??           00377     CLRF    RXB4
+0195   01??           00378     CLRF    RXB5
+0196   01??           00379     CLRF    RXB6
+0197   01??           00380     CLRF    RXB7
+0198   01??           00381     CLRF    DIVISION
 Warning[203]: Found opcode in column 1. (RETURN)
-0198   0008           00382 RETURN
+0199   0008           00382 RETURN
                       00383     
-0199                  00384 CONFIGURACION_PWM:
+019A                  00384 CONFIGURACION_PWM:
 Warning[207]: Found label after column 1. (SERVO1)
-0199                  00385     SERVO1:
-0199   1283 1303      00386     BANKSEL CCP1CON
-019B   1397           00387     BCF     CCP1CON, 7
-019C   1317           00388     BCF     CCP1CON, 6          ; 6 Y 7 PARA SINGLE OUTPUT
-019D   1297           00389     BCF     CCP1CON, 5          
-019E   1217           00390     BCF     CCP1CON, 4          ; BITS MENOS SIGNIFICATIVOS PARA EL ANCHO DE PULSO
-019F   1597           00391     BSF     CCP1CON, 3
-01A0   1517           00392     BSF     CCP1CON, 2
-01A1   1097           00393     BCF     CCP1CON, 1
-01A2   1017           00394     BCF     CCP1CON, 0
+019A                  00385     SERVO1:
+019A   1283 1303      00386     BANKSEL CCP1CON
+019C   1397           00387     BCF     CCP1CON, 7
+019D   1317           00388     BCF     CCP1CON, 6          ; 6 Y 7 PARA SINGLE OUTPUT
+019E   1297           00389     BCF     CCP1CON, 5          
+019F   1217           00390     BCF     CCP1CON, 4          ; BITS MENOS SIGNIFICATIVOS PARA EL ANCHO DE PULSO
+01A0   1597           00391     BSF     CCP1CON, 3
+01A1   1517           00392     BSF     CCP1CON, 2
+01A2   1097           00393     BCF     CCP1CON, 1
+01A3   1017           00394     BCF     CCP1CON, 0
 Warning[207]: Found label after column 1. (SERVO2)
-01A3                  00395     SERVO2:
-01A3   1283 1303      00396     BANKSEL CCP2CON
-01A5   129D           00397     BCF     CCP2CON, 5          
-01A6   121D           00398     BCF     CCP2CON, 4          ; BITS MENOS SIGNIFICATIVOS PARA EL ANCHO DE PULSO
-01A7   159D           00399     BSF     CCP2CON, 3
-01A8   151D           00400     BSF     CCP2CON, 2
-01A9   149D           00401     BSF     CCP2CON, 1
-01AA   141D           00402     BSF     CCP2CON, 0
+01A4                  00395     SERVO2:
+01A4   1283 1303      00396     BANKSEL CCP2CON
+01A6   129D           00397     BCF     CCP2CON, 5          
+01A7   121D           00398     BCF     CCP2CON, 4          ; BITS MENOS SIGNIFICATIVOS PARA EL ANCHO DE PULSO
+01A8   159D           00399     BSF     CCP2CON, 3
+01A9   151D           00400     BSF     CCP2CON, 2
+01AA   149D           00401     BSF     CCP2CON, 1
+01AB   141D           00402     BSF     CCP2CON, 0
 Warning[203]: Found opcode in column 1. (RETURN)
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  17:53:55         PAGE 10
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE 10
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-01AB   0008           00403 RETURN    
+01AC   0008           00403 RETURN    
                       00404     
-01AC                  00405 CONFIGURACION_TIMER0:
-01AC   1683 1303      00406     BANKSEL TRISA
-01AE   0064           00407     CLRWDT                      ; CONFIGURACIÓN PARA EL FUNCIONAMIENTO DEL TIMER0
-01AF   3057           00408     MOVLW   b'01010111'         ; PRESCALER DE 1:256 PARA PODER GENERAR INTERRUPCIONES DE 0.5ms
+01AD                  00405 CONFIGURACION_TIMER0:
+01AD   1683 1303      00406     BANKSEL TRISA
+01AF   0064           00407     CLRWDT                      ; CONFIGURACIÓN PARA EL FUNCIONAMIENTO DEL TIMER0
+01B0   3057           00408     MOVLW   b'01010111'         ; PRESCALER DE 1:256 PARA PODER GENERAR INTERRUPCIONES DE 0.5ms
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-01B0   0081           00409     MOVWF   OPTION_REG 
-01B1   1283 1303      00410     BANKSEL PORTA
+01B1   0081           00409     MOVWF   OPTION_REG 
+01B2   1283 1303      00410     BANKSEL PORTA
 Warning[203]: Found opcode in column 1. (RETURN)
-01B3   0008           00411 RETURN 
+01B4   0008           00411 RETURN 
                       00412     
-01B4                  00413 CONFIGURACION_TIMER2:
-01B4   1283 1303      00414     BANKSEL PORTA
-01B6   30FF           00415     MOVLW   b'11111111' ; PRESCALER Y POSTSCALER DE 16 CADA UNO Y TIMER 2 ACTIVADO
-01B7   0092           00416     MOVWF   T2CON    
+01B5                  00413 CONFIGURACION_TIMER2:
+01B5   1283 1303      00414     BANKSEL PORTA
+01B7   30FF           00415     MOVLW   b'11111111' ; PRESCALER Y POSTSCALER DE 16 CADA UNO Y TIMER 2 ACTIVADO
+01B8   0092           00416     MOVWF   T2CON    
 Warning[203]: Found opcode in column 1. (RETURN)
-01B8   0008           00417 RETURN
+01B9   0008           00417 RETURN
                       00418     
-01B9                  00419 CONFIGURACION_INTERRUPCION:
-01B9   1683 1303      00420     BANKSEL TRISA
+01BA                  00419 CONFIGURACION_INTERRUPCION:
+01BA   1683 1303      00420     BANKSEL TRISA
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-01BB   168C           00421     BSF     PIE1, RCIE          ; HABILITA INTERRUPCION DE RECEPCION SERIAL CON RX
-01BC   170B           00422     BSF     INTCON, PEIE        ; INTERRUPCIONES PERIFÉRICAS -RC-
-01BD   168B           00423     BSF     INTCON, T0IE
+01BC   168C           00421     BSF     PIE1, RCIE          ; HABILITA INTERRUPCION DE RECEPCION SERIAL CON RX
+01BD   170B           00422     BSF     INTCON, PEIE        ; INTERRUPCIONES PERIFÉRICAS -RC-
+01BE   168B           00423     BSF     INTCON, T0IE
                       00424     
-01BE   30BB           00425     MOVLW   .187                ; TECHO PARA TIMER2 - PARA QUE EL PWM FUNCIONE CON 3ms
+01BF   30BB           00425     MOVLW   .187                ; TECHO PARA TIMER2 - PARA QUE EL PWM FUNCIONE CON 3ms
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-01BF   0092           00426     MOVWF   PR2                 ; PARA PULSO DE 0° --> CCPR1L = 0x20 ^ CCP1CON<5:4> = b'00
+01C0   0092           00426     MOVWF   PR2                 ; PARA PULSO DE 0° --> CCPR1L = 0x20 ^ CCP1CON<5:4> = b'00
                       00427                                 ; PARA PULSO DE 180° --> CCP1L = 0x9D ^ CCP1CON<5:4> = b'00
                       00428                                 ; FUNCION PARA CONVERSION DE DATOS ADC PARA METER EN EL CCPR1L:
                       00429                                 ; CCP1RL = 32 + ADC/2
                       00430     
-01C0   1283 1303      00431     BANKSEL PORTA
-01C2   178B           00432     BSF     INTCON, GIE         ; HABILITA LAS INTERRUPCIONES
-01C3   110B           00433     BCF     INTCON, T0IF        ; PARA ASEGURARSE DE QUE NO TENGA OVERFLOW AL INICIO
+01C1   1283 1303      00431     BANKSEL PORTA
+01C3   178B           00432     BSF     INTCON, GIE         ; HABILITA LAS INTERRUPCIONES
+01C4   110B           00433     BCF     INTCON, T0IF        ; PARA ASEGURARSE DE QUE NO TENGA OVERFLOW AL INICIO
 Warning[203]: Found opcode in column 1. (RETURN)
-01C4   0008           00434 RETURN
+01C5   0008           00434 RETURN
                       00435 
-01C5                  00436 CONFIGURACION_TX_9600:
-01C5   1683 1303      00437     BANKSEL TRISA
+01C6                  00436 CONFIGURACION_TX_9600:
+01C6   1683 1303      00437     BANKSEL TRISA
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-01C7   1318           00438     BCF     TXSTA, TX9    
+01C8   1318           00438     BCF     TXSTA, TX9    
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-01C8   1218           00439     BCF     TXSTA, SYNC     ; PARA LOGRAR UN BAUD DE 9600 CON UN FOSC DE 4MHz
+01C9   1218           00439     BCF     TXSTA, SYNC     ; PARA LOGRAR UN BAUD DE 9600 CON UN FOSC DE 4MHz
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-01C9   1518           00440     BSF     TXSTA, BRGH     ; PARA LOGRAR UN BAUD DE 9600 CON UN FOSC DE 4MHz
+01CA   1518           00440     BSF     TXSTA, BRGH     ; PARA LOGRAR UN BAUD DE 9600 CON UN FOSC DE 4MHz
                       00441 
-01CA   1683 1703      00442     BANKSEL ANSEL
+01CB   1683 1703      00442     BANKSEL ANSEL
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-01CC   1187           00443     BCF     BAUDCTL, BRG16  ; PARA LOGRAR UN BAUD DE 9600 CON UN FOSC DE 4MHz
+01CD   1187           00443     BCF     BAUDCTL, BRG16  ; PARA LOGRAR UN BAUD DE 9600 CON UN FOSC DE 4MHz
                       00444     
-01CD   1683 1303      00445     BANKSEL TRISA
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  17:53:55         PAGE 11
+01CE   1683 1303      00445     BANKSEL TRISA
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE 11
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-01CF   3019           00446     MOVLW   .25
+01D0   3019           00446     MOVLW   .25
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-01D0   0099           00447     MOVWF   SPBRG           ; PARA LOGRAR UN BAUD DE 9600 CON UN FOSC DE 4MHz
+01D1   0099           00447     MOVWF   SPBRG           ; PARA LOGRAR UN BAUD DE 9600 CON UN FOSC DE 4MHz
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-01D1   019A           00448     CLRF    SPBRGH          ; PARA LOGRAR UN BAUD DE 9600 CON UN FOSC DE 4MHz
+01D2   019A           00448     CLRF    SPBRGH          ; PARA LOGRAR UN BAUD DE 9600 CON UN FOSC DE 4MHz
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-01D2   1698           00449     BSF     TXSTA, TXEN    
-01D3   1283 1303      00450     BANKSEL PORTA
+01D3   1698           00449     BSF     TXSTA, TXEN    
+01D4   1283 1303      00450     BANKSEL PORTA
 Warning[203]: Found opcode in column 1. (RETURN)
-01D5   0008           00451 RETURN
+01D6   0008           00451 RETURN
                       00452     
-01D6                  00453 CONFIGURACION_RX:
-01D6   1283 1303      00454     BANKSEL PORTA
-01D8   1798           00455     BSF     RCSTA, SPEN
-01D9   1318           00456     BCF     RCSTA, RX9
-01DA   1618           00457     BSF     RCSTA, CREN
+01D7                  00453 CONFIGURACION_RX:
+01D7   1283 1303      00454     BANKSEL PORTA
+01D9   1798           00455     BSF     RCSTA, SPEN
+01DA   1318           00456     BCF     RCSTA, RX9
+01DB   1618           00457     BSF     RCSTA, CREN
 Warning[203]: Found opcode in column 1. (RETURN)
-01DB   0008           00458 RETURN
+01DC   0008           00458 RETURN
                       00459     
-01DC                  00460 CONFIGURACION_ADC:    
-01DC   1683 1303      00461     BANKSEL ADCON1 
+01DD                  00460 CONFIGURACION_ADC:    
+01DD   1683 1303      00461     BANKSEL ADCON1 
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-01DE   019F           00462     CLRF    ADCON1              ; VDD Y VSS COMO REFERENCIA / JUSTIFICADO A LA IZQUIERDA
+01DF   019F           00462     CLRF    ADCON1              ; VDD Y VSS COMO REFERENCIA / JUSTIFICADO A LA IZQUIERDA
                       00463     
-01DF   1283 1303      00464     BANKSEL ADCON0 
-01E1   141F           00465     BSF     ADCON0, 0
-01E2   149F           00466     BSF     ADCON0, 1  
-01E3   111F           00467     BCF     ADCON0, 2
-01E4   119F           00468     BCF     ADCON0, 3
-01E5   129F           00469     BCF     ADCON0, 5
-01E6   131F           00470     BCF     ADCON0, 6
-01E7   139F           00471     BCF     ADCON0, 7   
+01E0   1283 1303      00464     BANKSEL ADCON0 
+01E2   141F           00465     BSF     ADCON0, 0
+01E3   149F           00466     BSF     ADCON0, 1  
+01E4   111F           00467     BCF     ADCON0, 2
+01E5   119F           00468     BCF     ADCON0, 3
+01E6   129F           00469     BCF     ADCON0, 5
+01E7   131F           00470     BCF     ADCON0, 6
+01E8   139F           00471     BCF     ADCON0, 7   
 Warning[203]: Found opcode in column 1. (RETURN)
-01E8   0008           00472 RETURN    
+01E9   0008           00472 RETURN    
                       00473 ;*******************************************************************************
                       00474     
 20D4 3FFF             00475     END 
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  17:53:55         PAGE 12
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE 12
 
 
 SYMBOL TABLE
@@ -690,7 +690,7 @@ BRG13                             00000005
 BRG14                             00000006
 BRG15                             00000007
 BRG16                             00000003
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  17:53:55         PAGE 13
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE 13
 
 
 SYMBOL TABLE
@@ -749,7 +749,7 @@ CCP2X                             00000005
 CCP2Y                             00000004
 CCPR1                             00000015
 CCPR1H                            00000016
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  17:53:55         PAGE 14
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE 14
 
 
 SYMBOL TABLE
@@ -768,14 +768,14 @@ CKP                               00000004
 CM1CON0                           00000107
 CM2CON0                           00000108
 CM2CON1                           00000109
-CONFIGURACION_ADC                 000001DC
+CONFIGURACION_ADC                 000001DD
 CONFIGURACION_BASE                0000016A
-CONFIGURACION_INTERRUPCION        000001B9
-CONFIGURACION_PWM                 00000199
-CONFIGURACION_RX                  000001D6
-CONFIGURACION_TIMER0              000001AC
-CONFIGURACION_TIMER2              000001B4
-CONFIGURACION_TX_9600             000001C5
+CONFIGURACION_INTERRUPCION        000001BA
+CONFIGURACION_PWM                 0000019A
+CONFIGURACION_RX                  000001D7
+CONFIGURACION_TIMER0              000001AD
+CONFIGURACION_TIMER2              000001B5
+CONFIGURACION_TX_9600             000001C6
 CONT1                             00000016
 CONTEO                            0000012D
 CONVERSION_ADC                    00000143
@@ -808,7 +808,7 @@ EEDATA                            0000010C
 EEDATH                            0000010E
 EEIE                              00000004
 EEIF                              00000004
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  17:53:55         PAGE 15
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE 15
 
 
 SYMBOL TABLE
@@ -867,7 +867,7 @@ MSK3                              00000003
 MSK4                              00000004
 MSK5                              00000005
 MSK6                              00000006
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  17:53:55         PAGE 16
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE 16
 
 
 SYMBOL TABLE
@@ -926,7 +926,7 @@ PS0                               00000000
 PS1                               00000001
 PS2                               00000002
 PSA                               00000003
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  17:53:55         PAGE 17
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE 17
 
 
 SYMBOL TABLE
@@ -985,7 +985,7 @@ RD3                               00000003
 RD4                               00000004
 RD5                               00000005
 RD6                               00000006
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  17:53:55         PAGE 18
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE 18
 
 
 SYMBOL TABLE
@@ -1019,8 +1019,8 @@ SCKP                              00000004
 SCS                               00000000
 SEN                               00000000
 SENDB                             00000003
-SERVO1                            00000199
-SERVO2                            000001A3
+SERVO1                            0000019A
+SERVO2                            000001A4
 SERVO_EJE1                        00000011
 SERVO_EJE2                        00000012
 SERVO_FUN                         00000013
@@ -1044,7 +1044,7 @@ SSPIF                             00000003
 SSPM0                             00000000
 SSPM1                             00000001
 SSPM2                             00000002
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  17:53:55         PAGE 19
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE 19
 
 
 SYMBOL TABLE
@@ -1103,7 +1103,7 @@ TOUTPS3                           00000006
 TRISA                             00000085
 TRISA0                            00000000
 TRISA1                            00000001
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  17:53:55         PAGE 20
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE 20
 
 
 SYMBOL TABLE
@@ -1162,7 +1162,7 @@ TXIE                              00000004
 TXIF                              00000004
 TXREG                             00000019
 TXSTA                             00000098
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  17:53:55         PAGE 21
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE 21
 
 
 SYMBOL TABLE
@@ -1221,7 +1221,7 @@ _BOR_OFF                          00003CFF
 _BOR_ON                           00003FFF
 _BOR_SBODEN                       00003DFF
 _CONFIG1                          00002007
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  17:53:55         PAGE 22
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE 22
 
 
 SYMBOL TABLE
@@ -1280,7 +1280,7 @@ _WRT_256                          00003DFF
 _WRT_HALF                         000039FF
 _WRT_OFF                          00003FFF
 _XT_OSC                           00003FF9
-MPASM 5.77                        PRUEBA.ASM   11-23-2020  17:53:55         PAGE 23
+MPASM 5.77                        PRUEBA.ASM   11-23-2020  18:24:17         PAGE 23
 
 
 SYMBOL TABLE
