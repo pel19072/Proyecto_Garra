@@ -24,7 +24,7 @@ class Ui_MainWindow(object):
         self.pushButton_2.setGeometry(QtCore.QRect(40, 170, 101, 28))
         self.pushButton_2.setObjectName("pushButton_2")
         self.label_presentacion = QtWidgets.QLabel(self.centralwidget)
-        self.label_presentacion.setGeometry(QtCore.QRect(125, 30, 600, 60))
+        self.label_presentacion.setGeometry(QtCore.QRect(110, 30, 600, 60))
         self.label_presentacion.setAlignment(QtCore.Qt.AlignCenter)
         font = QtGui.QFont()
         font.setPointSize(14)

@@ -327,11 +327,13 @@ BANDERA_RX:
 ;*******************************************************************************	    
 EEPROM_ESCRITURA:
     MOVFW   USUARIO
-    SUBWF   LAST_USER, W
+    SUBWF   USER_FLAG, W
     BTFSS   STATUS, Z
     GOTO    ACCION
 RETURN
     ACCION:
+    MOVFW   USUARIO
+    MOVWF   USER_FLAG
     BANKSEL EEADR
     MOVLW   .0
     MOVWF   EEADR
@@ -493,8 +495,7 @@ CONFIGURACION_BASE:
     CLRF    RXB9
     CLRF    USUARIO
     CLRF    LAST_USER
-    MOVLW   .1
-    MOVWF   USER_FLAG
+    CLRF    USER_FLAG
     CLRF    DIVISION
 RETURN
     
