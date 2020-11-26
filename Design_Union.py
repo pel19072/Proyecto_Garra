@@ -73,9 +73,6 @@ class Ui_MainWindow(object):
         self.pushButton_6 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_6.setGeometry(QtCore.QRect(600, 170, 93, 28))
         self.pushButton_6.setObjectName("pushButton_6")
-        self.label_7 = QtWidgets.QLabel(self.centralwidget)
-        self.label_7.setGeometry(QtCore.QRect(580, 200, 160, 41))
-        self.label_7.setObjectName("label_7")
         self.label_8 = QtWidgets.QLabel(self.centralwidget)
         self.label_8.setGeometry(QtCore.QRect(10, 500, 200, 100))
         self.label_8.setObjectName("label_8")
@@ -107,7 +104,6 @@ class Ui_MainWindow(object):
         self.label_6.setText(_translate("MainWindow", "SELECCIONAR USUARIO"))
         self.pushButton_5.setText(_translate("MainWindow", "USUARIO 1"))
         self.pushButton_6.setText(_translate("MainWindow", "USUARIO 2"))
-        self.label_7.setText(_translate("MainWindow", "ÚLTIMO USUARIO ACTIVO:\n"))
         self.label_8.setText(_translate("MainWindow", "CREADO POR:\nRICARDO PELLECER ORELLANA\nCARNÉ 19072"))
 
 
