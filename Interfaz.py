@@ -70,85 +70,87 @@ def controles():
         if (toggle == 1):
             # Mando 9 para control manual
             ser.write(bytes.fromhex('39'))
-            #print(ser.read())
+            print(ser.read())
             # Coma
             ser.write(bytes.fromhex('2C'))
-            #print(ser.read())
+            print(ser.read())
             # Posicion primer servo
             if (garra == 1):
                 # 00 para posición mínima
                 ser.write(bytes.fromhex('30'))
-                #print(ser.read())
+                print(ser.read())
             else:
                 # 9 para posición máxima
                 ser.write(bytes.fromhex('39'))
-                #print(ser.read())
+                print(ser.read())
             # Coma
             ser.write(bytes.fromhex('2C'))
-            #print(ser.read())
+            print(ser.read())
             # Posicion segundo servo
             ser.write(bytes.fromhex(hex(ord(str(value_vertical)))[2:]))
-            #print(ser.read())
+            print(ser.read())
             # Coma
             ser.write(bytes.fromhex('2C'))
-            #print(ser.read())
+            print(ser.read())
             # Posicion tercer servo
             ser.write(bytes.fromhex(hex(ord(str(value_horizontal)))[2:]))
-            #print(ser.read())
+            print(ser.read())
             # Coma
             ser.write(bytes.fromhex('2C'))
-            #print(ser.read())
+            print(ser.read())
             # Usuario actual
             ser.write(bytes.fromhex(hex(ord(str(usuario)))[2:]))
-            #print(ser.read())
+            print(ser.read())
             # Enter
             ser.write(bytes.fromhex('0A'))
-            #print(ser.read())
-            ser.flushInput()
+            print(ser.read())
+            #ser.flushInput()
+            '''
             try:
                 ser.readline()
-                recibido = str(ser.readline()).split(',')
-                final = recibido
+                final = str(ser.readline()).split(',')
                 final[0] = int(final[0][2:], 16)
                 #final = ['hola']
                 ventanamain.last(str(final[0]))
             except:
                 pass
+            '''
             ventanamain.actualizacion()
 
         else:
             try :
                 # Mando 00 para control manual
                 ser.write(bytes.fromhex('30'))
-                #print(ser.read())
+                print(ser.read())
                 # Coma
                 ser.write(bytes.fromhex('2C'))
-                #print(ser.read())
+                print(ser.read())
                 # Posicion primer servo
                 ser.write(bytes.fromhex('30'))
-                #print(ser.read())
+                print(ser.read())
                 # Coma
                 ser.write(bytes.fromhex('2C'))
-                #print(ser.read())
+                print(ser.read())
                 # Posicion segundo servo
                 ser.write(bytes.fromhex('30'))
-                #print(ser.read())
+                print(ser.read())
                 # Coma
                 ser.write(bytes.fromhex('2C'))
-                #print(ser.read())
+                print(ser.read())
                 # Posicion tercer servo
                 ser.write(bytes.fromhex('30'))
-                #print(ser.read())
+                print(ser.read())
                 # Coma
                 ser.write(bytes.fromhex('2C'))
-                #print(ser.read())
+                print(ser.read())
                 # Usuario actual
                 ser.write(bytes.fromhex(hex(ord(str(usuario)))[2:]))
-                #print(ser.read())
+                print(ser.read())
                 # Enter
                 ser.write(bytes.fromhex('0A'))
-                #print(ser.read())
-                ser.flushInput()
+                print(ser.read())
+                #ser.flushInput()
+                '''
                 try:
                     ser.readline()
                     recibido = str(ser.readline()).split(',')
@@ -158,6 +160,7 @@ def controles():
                     ventanamain.last(str(final[0]))
                 except:
                     pass
+                '''
                 ventanamain.actualizacion()
             except:
                 pass

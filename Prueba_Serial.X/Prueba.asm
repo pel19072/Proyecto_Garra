@@ -27,6 +27,7 @@ GPR_VAR				UDATA
     VAR_ADCX			RES	    1
     VAR_ADCY			RES	    1
     FLAG_ANTIREBOTE		RES	    1
+    FLAG_ADC			RES	    1
     TX_FLAG			RES	    1
     ALTO			RES	    1
     BAJO			RES	    1
@@ -74,6 +75,8 @@ PUSH:			    ; PUSHEA LOS DATOS DE STATUS Y W A UNA VARIABLE TEMPORAL EN CASO SE 
     MOVWF   STATUS_TEMP
 
 ISR:
+    BTFSC   PIR1, ADIF	    ; CÓDIGO PARA SABER DE PARTE DE QUIÉN ES LA INTERRUPCIÓN
+    CALL    BANDERA_ADC
     BTFSC   INTCON, T0IF
     CALL    BANDERA_TIMER0
     BTFSC   PIR1, RCIF
@@ -84,8 +87,83 @@ POP:			    ; POPEA LOS DATOS DE UNA VARIABLE TEMPORAL A STATUS Y W PARA RECUPERA
     MOVWF   STATUS
     SWAPF   W_TEMP, F
     SWAPF   W_TEMP, W
-RETFIE			    ; INCLUYE LA REACTIVACION DEL GIE
+RETFIE			    ; INCLUYE LA REACTIVACION DEL GIE     
+	
+;*******************************************************************************
+; MAIN PROGRAM
+;*******************************************************************************
+MAIN_PROG   CODE     0x0100                 ; let linker place main program
 
+START
+SETUP:
+    CALL    CONFIGURACION_BASE		    ; EXPLICACIONES EN LA SECCIÓN DE CONFIGURACIONES
+    CALL    CONFIGURACION_PWM
+    CALL    CONFIGURACION_TIMER0
+    CALL    CONFIGURACION_TIMER2
+    CALL    CONFIGURACION_INTERRUPCION
+    CALL    CONFIGURACION_TX_9600
+    CALL    CONFIGURACION_RX
+    CALL    CONFIGURACION_ADC
+    
+;*******************************************************************************
+; MAIN LOOP
+;*******************************************************************************    
+LOOP:
+    ;CALL    EEPROM_ESCRITURA
+    MOVLW   .9
+    SUBWF   SERVO_FUN, W
+    BTFSC   STATUS, Z
+    GOTO    AUTOMATIC
+    MANUAL:
+	BTFSS   PORTB, RB7		; REVISA SI EL BOTÓN DE CAMBIO DE ESTADO SE HA PRESIONADO
+	CALL    ANTIR			; INDICA QUE YA SE PRESIONÓ 
+	BTFSC   PORTB, RB7		; NO EJECUTA LA INSTRUCCIÓN SI SIGUE PRESIONADO EL BOTÓN
+	CALL    MODO_FUNCIONAMIENTO	; SE EJECUTA EL CAMBIO DE ESTADO
+	CALL    MAPPEO
+	GOTO    LOOP
+    AUTOMATIC:
+	MOVLW	.9
+	SUBWF   SERVO_GARRA, W
+	BTFSC   STATUS, Z
+	GOTO    AUTOMATIC_HIGH
+	AUTOMATIC_LOW:
+	    MOVLW	.253
+	    MOVWF	BAJO
+	    MOVLW	.245
+	    MOVWF	ALTO
+	    CALL	CONVERSION_COMPU
+	    GOTO	LOOP
+	AUTOMATIC_HIGH:
+	    MOVLW	.245
+	    MOVWF	BAJO
+	    MOVLW	.253
+	    MOVWF	ALTO
+	    CALL	CONVERSION_COMPU
+	    GOTO	LOOP	    
+
+;*******************************************************************************
+; SUBRUTINAS DE INTERRUPCION
+;*******************************************************************************	    
+BANDERA_ADC:
+    BTFSC   FLAG_ADC, 0
+    GOTO    ADCY
+    ADCX:
+	MOVFW   ADRESH	    ; MANDA LA CODIFICACION DIGITAL DE MI SEÑAL ANALOGICA AL PUERTO B
+	MOVWF   VAR_ADCX
+	CALL	CONFIGURACION_ADCY
+	BCF	PIR1, ADIF
+	BSF	ADCON0, 1
+	BSF	FLAG_ADC, 0
+    RETURN   
+    ADCY:		    ; FUNGIONA CON EL SERVO DERECHO
+	MOVFW   ADRESH	    ; MANDA LA CODIFICACION DIGITAL DE MI SEÑAL ANALOGICA AL PUERTO B
+	MOVWF   VAR_ADCY
+	CALL	CONFIGURACION_ADCX
+	BCF	PIR1, ADIF
+	BSF	ADCON0, 1
+	BCF	FLAG_ADC, 0
+    RETURN    
+    
 BANDERA_TIMER0:
     BTFSC   TOGGLE, 0
     GOTO    LOW_OPEN
@@ -191,153 +269,63 @@ BANDERA_RX:
 
     ERRONEO:
 	CLRF    CUENTARX		
-	RETURN      
- 
-;*******************************************************************************
-; TABLA DE CONVERSIONES
-;*******************************************************************************
-; SE USARA ESTA TABLA PARA REALIZAR LAS CONVERSIONES A ASCII 
-; Y ENVIAR LOS DATOS EN EL FORMATO DESEADO   
-CONVERSIONES:       
-    ANDLW   b'00001111'	
-    ADDWF   PCL, F
-    RETLW   .48		;0 
-    RETLW   .49		;1 
-    RETLW   .50		;2 
-    RETLW   .51		;3 
-    RETLW   .52		;4 
-    RETLW   .53		;5 
-    RETLW   .54		;6 
-    RETLW   .55		;7 
-    RETLW   .56		;8
-    RETLW   .57		;9 
-    RETLW   .65		;A   
-    RETLW   .66		;B   
-    RETLW   .67		;C  
-    RETLW   .68		;D   
-    RETLW   .69		;E  
-    RETLW   .70		;F 	
-	
-;*******************************************************************************
-; MAIN PROGRAM
-;*******************************************************************************
-MAIN_PROG   CODE     0x0100                 ; let linker place main program
-
-START
-SETUP:
-    CALL    CONFIGURACION_BASE		    ; EXPLICACIONES EN LA SECCIÓN DE CONFIGURACIONES
-    CALL    CONFIGURACION_PWM
-    CALL    CONFIGURACION_TIMER0
-    CALL    CONFIGURACION_TIMER2
-    CALL    CONFIGURACION_INTERRUPCION
-    CALL    CONFIGURACION_TX_9600
-    CALL    CONFIGURACION_RX
-    CALL    CONFIGURACION_ADC
-    
-;*******************************************************************************
-; MAIN LOOP
-;*******************************************************************************    
-LOOP:
-    ;CALL    RUTINA_TX
-    CALL    EEPROM_ESCRITURA
-    MOVLW   .9
-    SUBWF   SERVO_FUN, W
-    BTFSC   STATUS, Z
-    GOTO    AUTOMATIC
-    MANUAL:
-	BTFSS   PORTB, RB7		; REVISA SI EL BOTÓN DE CAMBIO DE ESTADO SE HA PRESIONADO
-	CALL    ANTIR			; INDICA QUE YA SE PRESIONÓ 
-	BTFSC   PORTB, RB7		; NO EJECUTA LA INSTRUCCIÓN SI SIGUE PRESIONADO EL BOTÓN
-	CALL    MODO_FUNCIONAMIENTO	; SE EJECUTA EL CAMBIO DE ESTADO
-	CALL    CONVERSION_ADC
-	GOTO    LOOP
-    AUTOMATIC:
-	MOVLW	.9
-	SUBWF   SERVO_GARRA, W
-	BTFSC   STATUS, Z
-	GOTO    AUTOMATIC_HIGH
-	AUTOMATIC_LOW:
-	    MOVLW	.253
-	    MOVWF	BAJO
-	    MOVLW	.245
-	    MOVWF	ALTO
-	    CALL	CONVERSION_COMPU
-	    GOTO	LOOP
-	AUTOMATIC_HIGH:
-	    MOVLW	.245
-	    MOVWF	BAJO
-	    MOVLW	.253
-	    MOVWF	ALTO
-	    CALL	CONVERSION_COMPU
-	    GOTO	LOOP	    
-
-;*******************************************************************************
-; RUTINA EEPROM
-;*******************************************************************************	    
-EEPROM_ESCRITURA:
-    MOVFW   USUARIO
-    SUBWF   USER_FLAG, W
-    BTFSC   STATUS, Z
-RETURN
-    MOVFW   USUARIO
-    MOVWF   USER_FLAG
-    BANKSEL EEADR
-    MOVLW   .0
-    MOVWF   EEADR
-    BANKSEL PORTA
-    MOVFW   USUARIO
-    BANKSEL EEDAT
-    MOVWF   EEDAT
-    BANKSEL EECON1
-    BCF	    EECON1, EEPGD
-    BSF	    EECON1, WREN
-    
-    BCF	    INTCON, GIE
-    MOVLW   0x55
-    MOVWF   EECON2
-    MOVLW   0xAA
-    MOVWF   EECON2
-    BSF	    EECON1, WR
-    BSF	    INTCON, GIE
-    
-    BCF	    EECON1, WREN
-    BANKSEL PORTA
-    CALL    EEPROM_LECTURA
-RETURN	    
-
-;*******************************************************************************
-; RUTINA DE LECTURA DE LA EEPROM
-;*******************************************************************************        
-EEPROM_LECTURA:
-    BCF	    INTCON, GIE
-    MOVLW   .0
-    BANKSEL EEADR
-    MOVWF   EEADR
-    BANKSEL EECON1
-    BCF	    EECON1, EEPGD
-    BSF	    EECON1, RD
-    BANKSEL EEDATA
-    MOVFW   EEDATA
-    BANKSEL PORTA
-    MOVWF   LAST_USER
-    BSF	    INTCON, GIE
-    MOVFW   LAST_USER
-    MOVWF   PORTD
-RETURN    
-    
-;*******************************************************************************
-; RUTINA ENVIO
-;*******************************************************************************             
-RUTINA_TX:    
-    MOVLW  .5 ;LAST_USER			
-    CALL   CONVERSIONES		
-    MOVWF  TXREG
-    CALL   DELAY_BIG
-        
-    MOVLW  .10			 
-    MOVWF  TXREG
-    CALL   DELAY_BIG
-RETURN 	    
+	RETURN 	    
+	    
+;;*******************************************************************************
+;; RUTINA EEPROM
+;;*******************************************************************************	    
+;EEPROM_ESCRITURA:
+;    MOVFW   USUARIO
+;    SUBWF   USER_FLAG, W
+;    BTFSS   STATUS, Z
+;    GOTO    ACCION
+;    BSF	    PORTB, 6
+;RETURN
+;    ACCION:
+;    MOVFW   USUARIO
+;    MOVWF   USER_FLAG
+;    BANKSEL EEADR
+;    MOVLW   .0
+;    MOVWF   EEADR
+;    BANKSEL PORTA
+;    MOVFW   USUARIO
+;    BANKSEL EEDAT
+;    MOVWF   EEDAT
+;    BANKSEL EECON1
+;    BCF	    EECON1, EEPGD
+;    BSF	    EECON1, WREN
+;    
+;    BCF	    INTCON, GIE
+;    MOVLW   0x55
+;    MOVWF   EECON2
+;    MOVLW   0xAA
+;    MOVWF   EECON2
+;    BSF	    EECON1, WR
+;    BSF	    INTCON, GIE
+;    
+;    BCF	    EECON1, WREN
+;    BANKSEL PORTA
+;    CALL    EEPROM_LECTURA
+;RETURN	    
+;
+;;*******************************************************************************
+;; RUTINA DE LECTURA DE LA EEPROM
+;;*******************************************************************************        
+;EEPROM_LECTURA:
+;    BCF	    INTCON, GIE
+;    MOVLW   .0
+;    BANKSEL EEADR
+;    MOVWF   EEADR
+;    BANKSEL EECON1
+;    BCF	    EECON1, EEPGD
+;    BSF	    EECON1, RD
+;    BANKSEL EEDATA
+;    MOVFW   EEDATA
+;    BANKSEL PORTA
+;    MOVWF   LAST_USER
+;    BSF	    INTCON, GIE
+;    MOVFW   LAST_USER
+;RETURN        
 	    
 ;*******************************************************************************
 ; RUTINA DE SELECCIÓN DE MODOS DE FUNCIONAMIENTO
@@ -389,60 +377,17 @@ RETURN
 ;*******************************************************************************
 ; RUTINA DE CONVERSION ADC
 ;*******************************************************************************         
-CONVERSION_ADC:
-    BANKSEL ADCON0
-    MOVLW   b'00000011'			
-    MOVWF   ADCON0  
-    CALL    DELAY
-   
-    BSF	    ADCON0,GO
-    BTFSC   ADCON0,GO 
-    GOTO    $-1
-    
-    BANKSEL ADRESH
-    MOVFW   ADRESH
-    MOVWF   VAR_ADCY	
-    
-    RRF	    VAR_ADCY, 0
-    ANDLW   b'01111111'
-    ADDLW   .32
-    MOVWF   CCPR2L 
-    
-    BANKSEL ADCON0
-    MOVLW   b'00010011'			
-    MOVWF   ADCON0
-    CALL    DELAY
-    
-    BSF	    ADCON0,GO
-    BTFSC   ADCON0,GO 
-    GOTO    $-1
-    
-    BANKSEL ADRESH
-    MOVFW   ADRESH
-    MOVWF   VAR_ADCX
-    
+MAPPEO:
     RRF	    VAR_ADCX, 0
     ANDLW   b'01111111'
     ADDLW   .32
     MOVWF   CCPR1L
-RETURN 
-    
-;*******************************************************************************
-; RUTINA DE DELAYS
-;*******************************************************************************                
-DELAY:
-    MOVLW   .80			    
-    MOVWF   CONT1
-    DECFSZ  CONT1, F
-    GOTO    $-1                       
-RETURN  
-    
-DELAY_BIG:
-    MOVLW   .60			    
-    MOVWF   CONT1
-    DECFSZ  CONT1, F
-    GOTO    $-1                      
-RETURN     
+    RRF	    VAR_ADCY, 0
+    ANDLW   b'01111111'
+    ADDLW   .32
+    MOVWF   CCPR2L    
+RETURN
+         
 ;*******************************************************************************
 ; CONFIGURACIONES
 ;*******************************************************************************         
@@ -475,6 +420,7 @@ CONFIGURACION_BASE:
     
     BANKSEL PORTA
     CLRF    FLAG_ANTIREBOTE
+    CLRF    FLAG_ADC
     CLRF    TX_FLAG
     CLRF    VAR_ADCX  
     CLRF    VAR_ADCY  
@@ -540,6 +486,7 @@ RETURN
     
 CONFIGURACION_INTERRUPCION:
     BANKSEL TRISA
+    BSF	    PIE1, ADIE
     BSF	    PIE1, RCIE		; HABILITA INTERRUPCION DE RECEPCION SERIAL CON RX
     BSF	    INTCON, PEIE	; INTERRUPCIONES PERIFÉRICAS -RC-
     BSF	    INTCON, T0IE
@@ -590,8 +537,18 @@ CONFIGURACION_ADC:
     BCF	    ADCON0, 3
     BCF	    ADCON0, 5
     BCF	    ADCON0, 6
-    BCF	    ADCON0, 7   
+    BSF	    ADCON0, 7   
 RETURN    
+
+CONFIGURACION_ADCX:
+    BANKSEL ADCON0 
+    BCF	    ADCON0, 4
+RETURN
+    
+CONFIGURACION_ADCY:    
+    BANKSEL ADCON0 
+    BSF	    ADCON0, 4
+RETURN
 ;*******************************************************************************
     
     END 
