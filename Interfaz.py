@@ -107,10 +107,10 @@ def controles():
             #try:
             ser.flushInput()
             ser.readline()
-            final = str(ser.readline())
+            final = str(ser.readline())[2]
             #final[0] = int(final[0][2:], 16)
             #final = ['adios']
-            #ventanamain.last(str(final[0]))
+            ventanamain.last(str(final))
             print(final)
             #except:
                 #pass
@@ -151,12 +151,11 @@ def controles():
                 #print(ser.read())
                 ser.flushInput()
                 ser.readline()
-                recibido = str(ser.readline())
-                final = recibido
+                final = str(ser.readline())[2]
                 #final[0] = int(final[0][2:], 16)
                 #final = ['adios']
-                #ventanamain.last(str(final[0]))
-                print(final)                
+                ventanamain.last(str(final))
+                print(final)
                 ventanamain.actualizacion()
             except:
                 pass
