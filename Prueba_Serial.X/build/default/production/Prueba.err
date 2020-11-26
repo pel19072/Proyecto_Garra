@@ -40,45 +40,61 @@ Warning[207] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 
 Warning[207] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 177 : Found label after column 1. (LOW_OPEN)
 Warning[207] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 222 : Found label after column 1. (VERIFICACION)
 Warning[207] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 270 : Found label after column 1. (ERRONEO)
-Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 337 : Found opcode in column 1. (RETURN)
-Warning[207] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 343 : Found label after column 1. (CONTEO)
-Message[305] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 348 : Using default destination of 1 (file).
-Warning[207] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 350 : Found label after column 1. (REINICIOA)
-Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 363 : Found opcode in column 1. (RETURN)
-Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 375 : Found opcode in column 1. (RETURN)
-Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 389 : Found opcode in column 1. (RETURN)
+Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 283 : Found opcode in column 1. (RETURN)
+Warning[207] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 284 : Found label after column 1. (ACCION)
+Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 289 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 293 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 295 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 296 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 300 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 302 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 303 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 306 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 309 : Found opcode in column 1. (RETURN)
+Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 318 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 320 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 321 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 323 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 327 : Found opcode in column 1. (RETURN)
+Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 336 : Found opcode in column 1. (RETURN)
+Warning[207] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 342 : Found label after column 1. (CONTEO)
+Message[305] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 347 : Using default destination of 1 (file).
+Warning[207] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 349 : Found label after column 1. (REINICIOA)
+Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 362 : Found opcode in column 1. (RETURN)
+Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 374 : Found opcode in column 1. (RETURN)
+Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 388 : Found opcode in column 1. (RETURN)
+Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 402 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 403 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 404 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 405 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 406 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 410 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 409 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 412 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 413 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 414 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 415 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 416 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 417 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 418 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 419 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 450 : Found opcode in column 1. (RETURN)
-Warning[207] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 453 : Found label after column 1. (SERVO1)
-Warning[207] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 463 : Found label after column 1. (SERVO2)
-Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 471 : Found opcode in column 1. (RETURN)
-Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 477 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 479 : Found opcode in column 1. (RETURN)
-Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 485 : Found opcode in column 1. (RETURN)
+Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 449 : Found opcode in column 1. (RETURN)
+Warning[207] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 452 : Found label after column 1. (SERVO1)
+Warning[207] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 462 : Found label after column 1. (SERVO2)
+Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 470 : Found opcode in column 1. (RETURN)
+Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 476 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 478 : Found opcode in column 1. (RETURN)
+Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 484 : Found opcode in column 1. (RETURN)
+Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 488 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 489 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 490 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 495 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 503 : Found opcode in column 1. (RETURN)
+Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 494 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 502 : Found opcode in column 1. (RETURN)
+Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 506 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 507 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 508 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 509 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 512 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 511 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 515 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 516 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 517 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 518 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 520 : Found opcode in column 1. (RETURN)
-Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 527 : Found opcode in column 1. (RETURN)
-Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 531 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 541 : Found opcode in column 1. (RETURN)
-Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 546 : Found opcode in column 1. (RETURN)
-Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 551 : Found opcode in column 1. (RETURN)
+Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 519 : Found opcode in column 1. (RETURN)
+Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 526 : Found opcode in column 1. (RETURN)
+Message[302] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 530 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 540 : Found opcode in column 1. (RETURN)
+Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 545 : Found opcode in column 1. (RETURN)
+Warning[203] E:\UVG\SEMESTRE 4\MICROS\PROYECTO_GARRA\PRUEBA_SERIAL.X\PRUEBA.ASM 550 : Found opcode in column 1. (RETURN)

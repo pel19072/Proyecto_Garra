@@ -109,7 +109,7 @@ SETUP:
 ; MAIN LOOP
 ;*******************************************************************************    
 LOOP:
-    ;CALL    EEPROM_ESCRITURA
+    CALL    EEPROM_ESCRITURA
     MOVLW   .9
     SUBWF   SERVO_FUN, W
     BTFSC   STATUS, Z
@@ -271,61 +271,60 @@ BANDERA_RX:
 	CLRF    CUENTARX		
 	RETURN 	    
 	    
-;;*******************************************************************************
-;; RUTINA EEPROM
-;;*******************************************************************************	    
-;EEPROM_ESCRITURA:
-;    MOVFW   USUARIO
-;    SUBWF   USER_FLAG, W
-;    BTFSS   STATUS, Z
-;    GOTO    ACCION
-;    BSF	    PORTB, 6
-;RETURN
-;    ACCION:
-;    MOVFW   USUARIO
-;    MOVWF   USER_FLAG
-;    BANKSEL EEADR
-;    MOVLW   .0
-;    MOVWF   EEADR
-;    BANKSEL PORTA
-;    MOVFW   USUARIO
-;    BANKSEL EEDAT
-;    MOVWF   EEDAT
-;    BANKSEL EECON1
-;    BCF	    EECON1, EEPGD
-;    BSF	    EECON1, WREN
-;    
-;    BCF	    INTCON, GIE
-;    MOVLW   0x55
-;    MOVWF   EECON2
-;    MOVLW   0xAA
-;    MOVWF   EECON2
-;    BSF	    EECON1, WR
-;    BSF	    INTCON, GIE
-;    
-;    BCF	    EECON1, WREN
-;    BANKSEL PORTA
-;    CALL    EEPROM_LECTURA
-;RETURN	    
-;
-;;*******************************************************************************
-;; RUTINA DE LECTURA DE LA EEPROM
-;;*******************************************************************************        
-;EEPROM_LECTURA:
-;    BCF	    INTCON, GIE
-;    MOVLW   .0
-;    BANKSEL EEADR
-;    MOVWF   EEADR
-;    BANKSEL EECON1
-;    BCF	    EECON1, EEPGD
-;    BSF	    EECON1, RD
-;    BANKSEL EEDATA
-;    MOVFW   EEDATA
-;    BANKSEL PORTA
-;    MOVWF   LAST_USER
-;    BSF	    INTCON, GIE
-;    MOVFW   LAST_USER
-;RETURN        
+;*******************************************************************************
+; RUTINA EEPROM
+;*******************************************************************************	    
+EEPROM_ESCRITURA:
+    MOVFW   USUARIO
+    SUBWF   USER_FLAG, W
+    BTFSS   STATUS, Z
+    GOTO    ACCION
+    BSF	    PORTB, 6
+RETURN
+    ACCION:
+    MOVFW   USUARIO
+    MOVWF   USER_FLAG
+    BANKSEL EEADR
+    MOVLW   .0
+    MOVWF   EEADR
+    BANKSEL PORTA
+    MOVFW   USUARIO
+    BANKSEL EEDAT
+    MOVWF   EEDAT
+    BANKSEL EECON1
+    BCF	    EECON1, EEPGD
+    BSF	    EECON1, WREN
+    
+    BCF	    INTCON, GIE
+    MOVLW   0x55
+    MOVWF   EECON2
+    MOVLW   0xAA
+    MOVWF   EECON2
+    BSF	    EECON1, WR
+    BSF	    INTCON, GIE
+    
+    BCF	    EECON1, WREN
+    BANKSEL PORTA
+    CALL    EEPROM_LECTURA
+RETURN	    
+
+;*******************************************************************************
+; RUTINA DE LECTURA DE LA EEPROM
+;*******************************************************************************        
+EEPROM_LECTURA:
+    BCF	    INTCON, GIE
+    MOVLW   .0
+    BANKSEL EEADR
+    MOVWF   EEADR
+    BANKSEL EECON1
+    BCF	    EECON1, EEPGD
+    BSF	    EECON1, RD
+    BANKSEL EEDATA
+    MOVFW   EEDATA
+    BANKSEL PORTA
+    MOVWF   LAST_USER
+    BSF	    INTCON, GIE
+RETURN        
 	    
 ;*******************************************************************************
 ; RUTINA DE SELECCIÓN DE MODOS DE FUNCIONAMIENTO
