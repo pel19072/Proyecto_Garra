@@ -56,6 +56,9 @@ class SKETCH (QtWidgets.QMainWindow, Ui_MainWindow):
         global usuario
         usuario = 1
 
+    def last(self, ultimo_usuario):
+        self.label_7.setText("ÚLTIMO USUARIO ACTIVO:\n          USUARIO " + ultimo_usuario) #str(int(ultimo_usuario)+1) ultimo_usuario
+
     def actualizacion(self):
         self.update()
 
@@ -105,7 +108,8 @@ def controles():
             #ser.flushInput()
             ser.readline()
             final = str(ser.readline())
-            #print(final)
+            ventanamain.last(final[2])
+            print(final)
             #except:
                 #pass
             ventanamain.actualizacion()
@@ -146,7 +150,8 @@ def controles():
                 final = str(ser.readline())
                 #final[0] = int(final[0][2:], 16)
                 #final = ['adios']
-                #print(final)
+                ventanamain.last(final[2])
+                print(final)
                 ventanamain.actualizacion()
             except:
                 pass
