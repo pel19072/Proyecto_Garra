@@ -57,7 +57,8 @@ class SKETCH (QtWidgets.QMainWindow, Ui_MainWindow):
         usuario = 1
 
     def last(self, ultimo_usuario):
-        self.label_7.setText("ÚLTIMO USUARIO ACTIVO:\n          USUARIO " + ultimo_usuario) #str(int(ultimo_usuario)+1) ultimo_usuario
+        global usuario
+        self.label_7.setText("ÚLTIMO USUARIO ACTIVO:\n          USUARIO " + str(usuario+1)) #str(int(ultimo_usuario)+1) ultimo_usuario
 
     def actualizacion(self):
         self.update()
