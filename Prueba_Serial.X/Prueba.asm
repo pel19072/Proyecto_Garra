@@ -174,7 +174,7 @@ LOOP:
 ;*******************************************************************************
 ; SUBRUTINAS DE INTERRUPCION
 ;*******************************************************************************	    
-BANDERA_TX:
+BANDERA_TX:				; MANDO DATOS --> UN NUMERO Y UN ENTER
     MOVLW   .1
     SUBWF   TX_FLAG, W
     BTFSC   STATUS, Z
@@ -215,7 +215,7 @@ BANDERA_ADC:
 	BCF	FLAG_ADC, 0
     RETURN    
     
-BANDERA_TIMER0:
+BANDERA_TIMER0:		    ; PERMITE ABRIR O CERRAR LA GARRA CARGANDOLE VALORES DE CONTROL ENTRE 0.5ms Y 2.5ms
     BTFSC   TOGGLE, 0
     GOTO    LOW_OPEN
     HIGH_OPEN:
